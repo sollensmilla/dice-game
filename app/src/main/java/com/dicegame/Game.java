@@ -11,10 +11,14 @@ public class Game {
     }
 
     public void addPlayer(Player player) {
+        if (players.size() >= 2) {
+            throw new IllegalStateException("Cannot add more than two players");
+        }
         players.add(player);
     }
 
     public List<Player> getPlayers() {
         return players;
+
     }
 }
