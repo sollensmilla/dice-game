@@ -14,4 +14,12 @@ public class PlayerTest {
         Player player = new Player("Eva");
         assert player.getScore() == 0 : "Player score should start at 0";
     }
+
+    @Test
+    public void addScoreShouldIncreasePlayerScore() {
+        Player player = new Player("Eva");
+
+        player.addScore();
+        assert player.getScore() == 1 : "Player score should be 1 after adding score";
+    }
 }
