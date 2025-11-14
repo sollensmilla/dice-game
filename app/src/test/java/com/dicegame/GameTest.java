@@ -16,4 +16,24 @@ public class GameTest {
 
         assert game.getPlayers().size() == 2 : "Game should have two players";    
    }
+
+   @Test
+   public void addingMoreThanTwoPlayersShouldThrowException() {
+         Player player1 = new Player("Alice");
+         Player player2 = new Player("Eva");
+         Player player3 = new Player("Bob");
+         Game game = new Game();
+
+        game.addPlayer(player1);
+        game.addPlayer(player2);
+
+        Exception exception = assertThrows(IllegalStateException.class, () -> {
+            game.addPlayer(player3);
+        });
+
+        String expectedMessage = "Cannot add more than two players";
+        String actualMessage = exception.getMessage();
+
+        assert actualMessage.contains(expectedMessage) : "Exception message should indicate max players reached";    
+   }
 }
