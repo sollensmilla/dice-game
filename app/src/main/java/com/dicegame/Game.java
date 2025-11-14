@@ -19,6 +19,13 @@ public class Game {
 
     public List<Player> getPlayers() {
         return players;
+    }
 
+    public Player compareFaceValues(Player player1, int player1Roll, Player player2, int player2Roll) {
+        if (player1Roll > player2Roll) {
+            return player1;
+        } else {
+            return player2;
+        }
     }
 }

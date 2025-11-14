@@ -1,6 +1,7 @@
 package com.dicegame;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.mockito.Mockito;
 
@@ -57,8 +58,8 @@ public class GameTest {
         int player1Roll = diceCupMock.rollAndSum();
         int player2Roll = diceCupMock.rollAndSum();
 
-        assertEquals(player2, game.compareFaceValues(player1, player1Roll, player2, player2Roll), "Eva should win with higher roll");
 
+        assertEquals(player2, game.compareFaceValues(player1, player1Roll, player2, player2Roll), "Eva should win with higher roll");
     }
 
 }
