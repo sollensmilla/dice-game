@@ -32,7 +32,7 @@ public class Game {
         return compareFaceValues(player1, player1Roll, player2, player2Roll);
     }
 
-    public Player compareFaceValues(Player player1, int player1Roll, Player player2, int player2Roll) {
+    private Player compareFaceValues(Player player1, int player1Roll, Player player2, int player2Roll) {
         if (player1Roll > player2Roll) {
             return player1;
         } else {
