@@ -82,4 +82,21 @@ public class GameTest {
         assertEquals(0, player2.getScore(), "Eva should have 0 point after losing");
     }
 
+    @Test
+    public void gameShouldEndWhenOnePlayerHasFivePoints() {
+        Player player1 = new Player("Alice");
+        Player player2 = new Player("Eva");
+
+        Mockito.when(diceCupMock.rollAndSum())
+            .thenReturn(10, 5)
+            .thenReturn(10, 5)
+            .thenReturn(10, 5)
+            .thenReturn(10, 5)
+            .thenReturn(10, 5);
+
+        Player winner = game.play();
+    
+        assertEquals(player1, winner, "Alice should win the game");
+    }
+
 }
