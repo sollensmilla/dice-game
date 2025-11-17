@@ -65,4 +65,21 @@ public class GameTest {
         assertEquals(player2, game.playRound(), "Eva should win with higher roll");
     }
 
+    @Test
+    public void playerShouldGetOnePointAfterWinningRound() {
+        Player player1 = new Player("Alice");
+        Player player2 = new Player("Eva");
+
+        Mockito.when(diceCupMock.rollAndSum())
+                .thenReturn(12)  
+                .thenReturn(10);
+
+        game.addPlayer(player1);
+        game.addPlayer(player2);
+        game.playRound();
+
+        assertEquals(1, player1.getScore(), "Alice should have 1 point after winning");
+        assertEquals(0, player2.getScore(), "Eva should have 0 point after losing");
+    }
+
 }
