@@ -23,6 +23,15 @@ public class Game {
         return players;
     }
 
+    public Player play() {
+        while (true) {
+            Player roundWinner = playRound();
+            if (roundWinner.getScore() >= 5) {
+                return roundWinner;
+            }
+        }
+    }
+
     public Player playRound() {
         Player player1 = players.get(0);
         Player player2 = players.get(1);

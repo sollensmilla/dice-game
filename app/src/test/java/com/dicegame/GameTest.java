@@ -94,6 +94,8 @@ public class GameTest {
             .thenReturn(10, 5)
             .thenReturn(10, 5);
 
+        game.addPlayer(player1);
+        game.addPlayer(player2);
         Player winner = game.play();
     
         assertEquals(player1, winner, "Alice should win the game");
