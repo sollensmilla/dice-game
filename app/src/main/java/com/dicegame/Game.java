@@ -5,9 +5,11 @@ import java.util.List;
 
 public class Game {
     private List<Player> players;
+    private DiceCup diceCup;
 
-    public Game() {
+    public Game(DiceCup diceCup) {
         players = new ArrayList<>();
+        this.diceCup = diceCup;
     }
 
     public void addPlayer(Player player) {
@@ -19,6 +21,15 @@ public class Game {
 
     public List<Player> getPlayers() {
         return players;
+    }
+
+    public Player playRound() {
+        Player player1 = players.get(0);
+        Player player2 = players.get(1);
+        int player1Roll = diceCup.rollAndSum();
+        int player2Roll  = diceCup.rollAndSum();
+
+        return compareFaceValues(player1, player1Roll, player2, player2Roll);
     }
 
     public Player compareFaceValues(Player player1, int player1Roll, Player player2, int player2Roll) {
