@@ -29,7 +29,10 @@ public class Game {
         int player1Roll = diceCup.rollAndSum();
         int player2Roll  = diceCup.rollAndSum();
 
-        return compareFaceValues(player1, player1Roll, player2, player2Roll);
+        Player winner = compareFaceValues(player1, player1Roll, player2, player2Roll);
+        winner.addScore();
+
+        return winner;
     }
 
     private Player compareFaceValues(Player player1, int player1Roll, Player player2, int player2Roll) {
