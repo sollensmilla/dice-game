@@ -62,10 +62,7 @@ public class GameTest {
         game.addPlayer(player1);
         game.addPlayer(player2);
 
-        int player1Roll = diceCupMock.rollAndSum();
-        int player2Roll = diceCupMock.rollAndSum();
-
-        assertEquals(player2, game.compareFaceValues(player1, player1Roll, player2, player2Roll), "Eva should win with higher roll");
+        assertEquals(player2, game.playRound(), "Eva should win with higher roll");
     }
 
 }
