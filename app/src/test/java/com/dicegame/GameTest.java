@@ -1,6 +1,9 @@
 package com.dicegame;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeEach;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.mockito.Mockito;
@@ -8,11 +11,19 @@ import org.mockito.Mockito;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
+    private DiceCup diceCupMock;
+    private Game game;
+
+    @BeforeEach
+    public void setUp() {
+        diceCupMock = Mockito.mock(DiceCup.class);
+        game = new Game(diceCupMock);
+    }
+
     @Test
     public void gameShouldHaveTwoPlayers() {
         Player player1 = new Player("Alice");
         Player player2 = new Player("Eva");
-        Game game = new Game();
 
         game.addPlayer(player1);
         game.addPlayer(player2);
@@ -25,7 +36,6 @@ public class GameTest {
         Player player1 = new Player("Alice");
         Player player2 = new Player("Eva");
         Player player3 = new Player("Bob");
-        Game game = new Game();
 
         game.addPlayer(player1);
         game.addPlayer(player2);
@@ -44,20 +54,16 @@ public class GameTest {
     public void gameShouldCheckWhichPlayerRollsHighest() {
         Player player1 = new Player("Alice");
         Player player2 = new Player("Eva");
-        Game game = new Game();
+
+        Mockito.when(diceCupMock.rollAndSum())
+                .thenReturn(7)  
+                .thenReturn(10);
 
         game.addPlayer(player1);
         game.addPlayer(player2);
 
-        DiceCup diceCupMock = Mockito.mock(DiceCup.class);
-
-            Mockito.when(diceCupMock.rollAndSum())
-                .thenReturn(7)  
-                .thenReturn(10);
-
         int player1Roll = diceCupMock.rollAndSum();
         int player2Roll = diceCupMock.rollAndSum();
-
 
         assertEquals(player2, game.compareFaceValues(player1, player1Roll, player2, player2Roll), "Eva should win with higher roll");
     }
