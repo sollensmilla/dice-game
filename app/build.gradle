@@ -51,8 +51,8 @@ test {
         events "PASSED", "FAILED", "SKIPPED", "STANDARD_ERROR", "STANDARD_OUT"
         showStandardStreams = true
     }
+    jvmArgs += ["-XX:+EnableDynamicAgentLoading"]
 }
-
 
 application {
     // Define the main class for the application.
