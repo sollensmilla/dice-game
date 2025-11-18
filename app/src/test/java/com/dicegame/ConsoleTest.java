@@ -18,7 +18,7 @@ public class ConsoleTest {
 
         Console console = new Console(new Scanner(""), printStream);
 
-         console.askForPlayerNames();
+         console.promptForPlayerNames();
 
         String result = output.toString().trim();
 
