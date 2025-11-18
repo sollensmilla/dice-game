@@ -22,6 +22,10 @@ public class Console {
 
         out.println("Enter name for Player 2 (leave empty to play against the computer):");
         String player2 = scanner.nextLine();
+
+        if (player2 == "") {
+            player2 = "Bot";
+        }
         
         return new String[] { player1, player2 };
     }
