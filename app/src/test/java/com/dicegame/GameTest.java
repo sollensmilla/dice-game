@@ -58,6 +58,17 @@ public class GameTest {
     }
 
     @Test
+    public void gameShouldNotAwardPointsWhenPlayersTie() {
+        Mockito.when(diceCupMock.rollAndSum())
+                .thenReturn(8)  
+                .thenReturn(8);
+
+        game.playRound();
+        assertEquals(0, player1.getScore(), "Alice should have 0 points after tie");
+        assertEquals(0, player2.getScore(), "Eva should have 0 points after tie");
+    }
+
+    @Test
     public void playerShouldGetOnePointAfterWinningRound() {
         Mockito.when(diceCupMock.rollAndSum())
                 .thenReturn(12)  
