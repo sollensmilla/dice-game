@@ -1,14 +1,10 @@
 package com.dicegame;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import org.junit.jupiter.api.BeforeEach;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.mockito.Mockito;
-
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.mockito.Mockito;
 
 public class GameTest {
     private DiceCup diceCupMock;
