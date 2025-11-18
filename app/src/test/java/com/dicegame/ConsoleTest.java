@@ -12,23 +12,7 @@ import org.mockito.Mockito;
 
 public class ConsoleTest {
     @Test
-    public void consoleShouldPromptForPlayerNames() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(output);
-
-        Console console = new Console(new Scanner(""), printStream);
-
-        console.promptForPlayerNames();
-
-        String result = output.toString().trim();
-
-        assertEquals(
-                "Enter name for Player 1:\nEnter name for Player 2:",
-                result);
-    }
-
-    @Test
-    public void promptForPlayerNamesShouldLetPlayersInputNames() {
+    public void promptForPlayerNamesShouldReadNames() {
         String input = "Alice\nEva\n";
         Scanner scanner = new Scanner(input);
 
@@ -40,5 +24,9 @@ public class ConsoleTest {
         String[] result = console.promptForPlayerNames();
 
         assertArrayEquals(new String[] { "Alice", "Eva" }, result);
+
+        assertEquals(
+                "Enter name for Player 1:\nEnter name for Player 2:",
+                output.toString().trim());
     }
 }
