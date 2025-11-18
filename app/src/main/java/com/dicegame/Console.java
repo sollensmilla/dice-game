@@ -16,8 +16,13 @@ public class Console {
         this.out = out;
     }
 
-    public void promptForPlayerNames() {
+    public String[] promptForPlayerNames() {
         out.println("Enter name for Player 1:");
+        String player1 = scanner.nextLine();
+
         out.println("Enter name for Player 2:");
+        String player2 = scanner.nextLine();
+        
+        return new String[] { player1, player2 };
     }
 }
