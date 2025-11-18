@@ -1,13 +1,8 @@
 package com.dicegame;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.io.ByteArrayInputStream;
 import java.util.List;
-import java.util.Scanner;
-
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -15,8 +10,11 @@ public class GameConsoleIntegrationTest {
 
     @Test
     public void setUpGameShouldAddPlayersToGame() {
+      String fakeInput = "Alice\nEva\n";
+      System.setIn(new ByteArrayInputStream(fakeInput.getBytes()));
+
       DiceCup diceCupMock = Mockito.mock(DiceCup.class);
-      Game game = new Game(null);
+      Game game = new Game(diceCupMock);
       game.setUpGame();
 
       List<Player> players = game.getPlayers();
