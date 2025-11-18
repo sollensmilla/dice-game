@@ -12,6 +12,15 @@ public class Game {
         this.diceCup = diceCup;
     }
 
+    public void setUpGame() {
+        Console console = new Console();
+        String[] playerNames = console.promptForPlayerNames();
+        for (String name : playerNames) {
+            Player player = new Player(name);
+            addPlayer(player);
+        }
+    }
+
     public void addPlayer(Player player) {
         if (players.size() >= 2) {
             throw new IllegalStateException("Cannot add more than two players");
