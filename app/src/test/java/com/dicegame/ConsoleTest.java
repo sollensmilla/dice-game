@@ -26,7 +26,7 @@ public class ConsoleTest {
         assertArrayEquals(new String[] { "Alice", "Eva" }, result);
 
         assertEquals(
-                "Enter name for Player 1:\nEnter name for Player 2:",
+                "Enter name for Player 1:\nEnter name for Player 2 (leave empty to play against the computer):",
                 output.toString().trim());
     }
 }

@@ -20,7 +20,7 @@ public class Console {
         out.println("Enter name for Player 1:");
         String player1 = scanner.nextLine();
 
-        out.println("Enter name for Player 2:");
+        out.println("Enter name for Player 2 (leave empty to play against the computer):");
         String player2 = scanner.nextLine();
         
         return new String[] { player1, player2 };
