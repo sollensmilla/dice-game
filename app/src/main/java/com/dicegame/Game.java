@@ -39,16 +39,19 @@ public class Game {
         int player2Roll  = diceCup.rollAndSum();
 
         Player winner = compareFaceValues(player1, player1Roll, player2, player2Roll);
-        winner.addScore();
-
+        if (winner != null) {
+            winner.addScore();
+        } 
         return winner;
     }
 
     private Player compareFaceValues(Player player1, int player1Roll, Player player2, int player2Roll) {
         if (player1Roll > player2Roll) {
             return player1;
-        } else {
+        } else if (player2Roll > player1Roll) {
             return player2;
+        } else {
+            return null;
         }
     }
 }
