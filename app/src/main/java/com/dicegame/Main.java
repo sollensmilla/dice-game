@@ -2,8 +2,10 @@ package com.dicegame;
 
 public class Main {
     public static void main(String[] args) {
-        Game game = new Game(new DiceCup(new Dice(), new Dice()), new Console());
+        Console console = new Console();
+        Game game = new Game(new DiceCup(new Dice(), new Dice()), console);
         game.setUpGame();
+        console.displayWelcomeScreen("Alice", "Eva");
         game.play();
     }
 }

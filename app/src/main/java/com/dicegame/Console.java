@@ -29,4 +29,9 @@ public class Console {
         
         return new String[] { player1, player2 };
     }
+
+    public void displayWelcomeScreen(String player1, String player2) {
+
+        out.print("Welcome to the dice game, " + player1 + " and " + player2 + "!\nPress enter to start playing.");
+    }
 }

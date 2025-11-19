@@ -55,9 +55,17 @@ public class ConsoleTest {
         Console console = new Console(scanner, printStream);
 
         console.promptForPlayerNames();
+        output.reset();
 
-        String[] result = console.displayWelcomeScreen();
+        console.displayWelcomeScreen("Alice", "Eva");
 
-        assertArrayEquals(new String[] { "Welcome to the dice game, Alice and Eva! Press enter to begin."}, result);
+        String expected = "Welcome to the dice game, Alice and Eva!"
+                + System.lineSeparator()
+                + "Press enter to start playing.";
+
+        String actual = output.toString().trim();
+
+        assertEquals(expected, actual);
+
     }
 }
