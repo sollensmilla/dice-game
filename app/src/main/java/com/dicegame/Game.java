@@ -36,7 +36,7 @@ public class Game {
     public Player play() {
         while (true) {
             Player roundWinner = playRound();
-            if (roundWinner.getScore() >= 5) {
+            if (roundWinner != null && roundWinner.getScore() >= 5) {
                 return roundWinner;
             }
         }
