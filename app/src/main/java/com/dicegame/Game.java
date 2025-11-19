@@ -6,22 +6,23 @@ import java.util.List;
 public class Game {
     private List<Player> players;
     private DiceCup diceCup;
+    private Console console;
 
-    public Game(DiceCup diceCup) {
+    public Game(DiceCup diceCup, Console console) {
         players = new ArrayList<>();
         this.diceCup = diceCup;
+        this.console = console;
     }
 
     public void setUpGame() {
-        Console console = new Console();
-        String[] playerNames = console.promptForPlayerNames();
-        for (String name : playerNames) {
-            Player player = new Player(name);
-            addPlayer(player);
-        }
+            String[] playerNames = console.promptForPlayerNames();
+            for (String name : playerNames) {
+                Player player = new Player(name);
+                addPlayer(player);
+            }
     }
 
-    public void addPlayer(Player player) {
+    private void addPlayer(Player player) {
         if (players.size() >= 2) {
             throw new IllegalStateException("Cannot add more than two players");
         }
@@ -45,12 +46,12 @@ public class Game {
         Player player1 = players.get(0);
         Player player2 = players.get(1);
         int player1Roll = diceCup.rollAndSum();
-        int player2Roll  = diceCup.rollAndSum();
+        int player2Roll = diceCup.rollAndSum();
 
         Player winner = compareFaceValues(player1, player1Roll, player2, player2Roll);
         if (winner != null) {
             winner.addScore();
-        } 
+        }
         return winner;
     }
 

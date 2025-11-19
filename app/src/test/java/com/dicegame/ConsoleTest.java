@@ -8,7 +8,6 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 public class ConsoleTest {
     @Test
