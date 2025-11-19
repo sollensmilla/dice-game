@@ -43,4 +43,21 @@ public class ConsoleTest {
 
         assertArrayEquals(new String[] { "Alice", "Bot" }, result);
     }
+
+    @Test
+    public void nameInputShouldBeDisplayedOnWelcomeScreen() {
+        String input = "Alice\nEva\n";
+        Scanner scanner = new Scanner(input);
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(output);
+
+        Console console = new Console(scanner, printStream);
+
+        console.promptForPlayerNames();
+
+        String[] result = console.displayWelcomeScreen();
+
+        assertArrayEquals(new String[] { "Welcome to the dice game, Alice and Eva! Press enter to begin."}, result);
+    }
 }
