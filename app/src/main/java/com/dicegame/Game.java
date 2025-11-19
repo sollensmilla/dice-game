@@ -20,6 +20,8 @@ public class Game {
                 Player player = new Player(name);
                 addPlayer(player);
             }
+
+        console.displayWelcomeScreen(players.get(0).getName(), players.get(1).getName());
     }
 
     private void addPlayer(Player player) {

@@ -5,7 +5,6 @@ public class Main {
         Console console = new Console();
         Game game = new Game(new DiceCup(new Dice(), new Dice()), console);
         game.setUpGame();
-        console.displayWelcomeScreen("Alice", "Eva");
         game.play();
     }
 }
