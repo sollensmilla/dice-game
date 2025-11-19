@@ -77,4 +77,19 @@ public class GameTest {
 
         assertEquals(player1, winner, "Alice should win the game");
     }
+
+    @Test
+    public void noRoundWinnerShouldNotCrashTheGame() {
+        Mockito.when(diceCupMock.rollAndSum())
+                .thenReturn(10, 10)
+                .thenReturn(10, 5)
+                .thenReturn(10, 5)
+                .thenReturn(10, 5)
+                .thenReturn(10, 5)
+                .thenReturn(10, 5);
+
+        Player winner = game.play();
+
+        assertEquals(player1, winner, "Alice should win the game");
+    }
 }
