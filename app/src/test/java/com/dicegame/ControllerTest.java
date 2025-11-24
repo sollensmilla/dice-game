@@ -42,6 +42,19 @@ public class ControllerTest {
     });
 
     assertTrue(exception.getMessage().contains("Cannot add more than two players"));
+  }
 
+  @Test
+  public void startGameShouldStartGameForTrue() {
+    Console consoleMock = Mockito.mock(Console.class);
+    Mockito.when(consoleMock.promptForGameStart())
+        .thenReturn(true);
+  
+    Game gameMock = Mockito.mock(Game.class);
+
+    Controller controller = new Controller(gameMock, consoleMock);
+    controller.startGame();
+
+    Mockito.verify(gameMock).play();
   }
 }
