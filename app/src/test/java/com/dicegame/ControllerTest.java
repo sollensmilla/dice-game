@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-public class GameConsoleIntegrationTest {
+public class ControllerTest {
   @Test
   public void setUpGameShouldAddPlayersToGameForGivenPlayers() {
     Console consoleMock = Mockito.mock(Console.class);
@@ -17,7 +17,8 @@ public class GameConsoleIntegrationTest {
 
     DiceCup diceCupMock = Mockito.mock(DiceCup.class);
     Game game = new Game(diceCupMock, consoleMock);
-    game.setUpGame();
+    Controller controller = new Controller(game, consoleMock);
+    controller.setUpGame();
     Mockito.verify(consoleMock).promptForPlayerNames();
 
     List<Player> players = game.getPlayers();
@@ -34,9 +35,10 @@ public class GameConsoleIntegrationTest {
         .thenReturn(new String[] { "Alice", "Eva", "Bob" });
 
     Game game = new Game(diceCupMock, consoleMock);
+    Controller controller = new Controller(game, consoleMock);
 
     Exception exception = assertThrows(IllegalStateException.class, () -> {
-      game.setUpGame();
+      controller.setUpGame();;
     });
 
     assertTrue(exception.getMessage().contains("Cannot add more than two players"));
