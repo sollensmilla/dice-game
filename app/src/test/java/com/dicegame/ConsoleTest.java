@@ -44,6 +44,21 @@ public class ConsoleTest {
     }
 
     @Test
+    public void promptForPlayerNamesShouldRepromptForPlayer1NameIfEmpty() {
+        String input = "\nAlice\nEva\n";
+        Scanner scanner = new Scanner(input);
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(output);
+
+        Console console = new Console(scanner, printStream);
+
+        String[] result = console.promptForPlayerNames();
+
+        assertArrayEquals(new String[] { "Alice", "Eva" }, result);
+    }
+
+    @Test
     public void promptForPlayerNamesShouldUseComputerPlayerForEmptyPlayer2() {
         String input = "Alice\n\n";
         Scanner scanner = new Scanner(input);
