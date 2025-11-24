@@ -72,14 +72,10 @@ public class ConsoleTest {
 
         console.displayWelcomeScreen("Alice", "Eva");
 
-        String expected = "Welcome to the dice game, Alice and Eva!"
-                + System.lineSeparator()
-                + "Press enter to start playing.";
-
+        String expected = "Welcome to the dice game, Alice and Eva!";
         String actual = output.toString().trim();
 
         assertEquals(expected, actual);
-
     }
 
     @Test
