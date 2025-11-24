@@ -10,7 +10,7 @@ import org.mockito.Mockito;
 
 public class GameConsoleIntegrationTest {
   @Test
-  public void setUpGameShouldAddPlayersToGame() {
+  public void setUpGameShouldAddPlayersToGameForGivenPlayers() {
     Console consoleMock = Mockito.mock(Console.class);
     Mockito.when(consoleMock.promptForPlayerNames())
         .thenReturn(new String[] { "Alice", "Eva" });
@@ -26,7 +26,7 @@ public class GameConsoleIntegrationTest {
   }
 
   @Test
-  public void setUpGameShouldNotAllowMoreThanTwoPlayers() {
+  public void setUpGameShouldThrowExceptionForMoreThanTwoPlayers() {
     Console consoleMock = Mockito.mock(Console.class);
     DiceCup diceCupMock = Mockito.mock(DiceCup.class);
     Mockito.when(consoleMock.promptForPlayerNames())
