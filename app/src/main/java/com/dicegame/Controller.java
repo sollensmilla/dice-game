@@ -22,4 +22,10 @@ public class Controller {
 
     console.displayWelcomeScreen(players.get(0).getName(), players.get(1).getName());
   }
+
+  public void startGame() {
+    if (console.promptForGameStart()) {
+      game.play();
+    }
+  }
 }
