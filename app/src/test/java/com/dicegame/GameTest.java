@@ -27,12 +27,12 @@ public class GameTest {
     }
 
     @Test
-    public void gameShouldHaveTwoPlayers() {
+    public void getPlayersShouldHaveSizeTwoForTwoPlayers() {
         assert game.getPlayers().size() == 2 : "Game should have two players";
     }
 
     @Test
-    public void gameShouldCheckWhichPlayerRollsHighest() {
+    public void playRoundShouldCheckWhichPlayerRollsHighestForEachRound() {
         Mockito.when(diceCupMock.rollAndSum())
                 .thenReturn(7)
                 .thenReturn(10);
@@ -41,7 +41,7 @@ public class GameTest {
     }
 
     @Test
-    public void gameShouldNotAwardPointsWhenPlayersTie() {
+    public void playRoundShouldNotAwardPointsForPlayerTie() {
         Mockito.when(diceCupMock.rollAndSum())
                 .thenReturn(8)
                 .thenReturn(8);
@@ -52,7 +52,7 @@ public class GameTest {
     }
 
     @Test
-    public void playerShouldGetOnePointAfterWinningRound() {
+    public void playRoundShouldAwardPointToPlayerForWinningRound() {
         Mockito.when(diceCupMock.rollAndSum())
                 .thenReturn(12)
                 .thenReturn(10);
@@ -64,7 +64,7 @@ public class GameTest {
     }
 
     @Test
-    public void gameShouldEndWhenOnePlayerHasFivePoints() {
+    public void playShouldRunUntilOnePlayerHasFivePoints() {
 
         Mockito.when(diceCupMock.rollAndSum())
                 .thenReturn(10, 5)
@@ -79,7 +79,7 @@ public class GameTest {
     }
 
     @Test
-    public void noRoundWinnerShouldNotCrashTheGame() {
+    public void playShouldNotAwardScoreForPlayerTie() {
         Mockito.when(diceCupMock.rollAndSum())
                 .thenReturn(10, 10)
                 .thenReturn(10, 5)
