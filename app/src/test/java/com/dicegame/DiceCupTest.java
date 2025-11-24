@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 
 public class DiceCupTest {
     @Test
-    public void diceCupShouldSumUpTwoDices() {
+    public void rollAndSumShouldCalculateSumForDiceCup() {
         Dice dice1 = Mockito.mock(Dice.class);
         Dice dice2 = Mockito.mock(Dice.class);
 
