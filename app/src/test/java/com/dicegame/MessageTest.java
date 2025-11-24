@@ -11,4 +11,11 @@ public class MessageTest {
     String result = message.getRoundWinnerMessage("Alice");
     assertEquals(result, roundWinnerMessage);
   }
+
+  public void getRollAndSumMessageShouldPrintMessageForFaceValues() {
+    Message message = new Message();
+    String faceValueForPlayer = "Alice rolled a sum of 7.";
+    String result = message.getRollAndSumMessage("Alice", 7);
+    assertEquals(result, faceValueForPlayer);
+  }
 }
