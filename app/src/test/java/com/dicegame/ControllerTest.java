@@ -16,7 +16,7 @@ public class ControllerTest {
         .thenReturn(new String[] { "Alice", "Eva" });
 
     DiceCup diceCupMock = Mockito.mock(DiceCup.class);
-    Game game = new Game(diceCupMock, consoleMock);
+    Game game = new Game(diceCupMock);
     Controller controller = new Controller(game, consoleMock);
     controller.setUpGame();
     Mockito.verify(consoleMock).promptForPlayerNames();
@@ -34,7 +34,7 @@ public class ControllerTest {
     Mockito.when(consoleMock.promptForPlayerNames())
         .thenReturn(new String[] { "Alice", "Eva", "Bob" });
 
-    Game game = new Game(diceCupMock, consoleMock);
+    Game game = new Game(diceCupMock);
     Controller controller = new Controller(game, consoleMock);
 
     Exception exception = assertThrows(IllegalStateException.class, () -> {
