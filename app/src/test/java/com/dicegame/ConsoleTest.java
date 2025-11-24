@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 public class ConsoleTest {
     @Test
-    public void promptForPlayerNamesShouldReadNames() {
+    public void promptForPlayerNamesShouldReadNamesForGivenInput() {
         String input = "Alice\nEva\n";
         Scanner scanner = new Scanner(input);
 
@@ -23,6 +23,19 @@ public class ConsoleTest {
         String[] result = console.promptForPlayerNames();
 
         assertArrayEquals(new String[] { "Alice", "Eva" }, result);
+    }
+
+    @Test
+    public void promptForPlayerNamesShouldDisplayPromptForPlayerNames() {
+        String input = "Alice\nEva\n";
+        Scanner scanner = new Scanner(input);
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(output);
+
+        Console console = new Console(scanner, printStream);
+
+        console.promptForPlayerNames();
 
         assertEquals(
                 "Enter name for Player 1:\nEnter name for Player 2 (leave empty to play against the computer):",
@@ -30,7 +43,7 @@ public class ConsoleTest {
     }
 
     @Test
-    public void shouldUseComputerPlayerIfPlayer2NameIsEmpty() {
+    public void promptForPlayerNamesShouldUseComputerPlayerForEmptyPlayer2() {
         String input = "Alice\n\n";
         Scanner scanner = new Scanner(input);
 
@@ -45,7 +58,7 @@ public class ConsoleTest {
     }
 
     @Test
-    public void nameInputShouldBeDisplayedOnWelcomeScreen() {
+    public void displayWelcomeScreenShouldDisplayNamesForGivenInput() {
         String input = "Alice\nEva\n";
         Scanner scanner = new Scanner(input);
 
