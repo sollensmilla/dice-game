@@ -11,7 +11,7 @@ public class Controller {
     this.console = console;
   }
   
-/*   public void setUpGame() {
+  public void setUpGame() {
     String[] playerNames = console.promptForPlayerNames();
     for (String name : playerNames) {
         Player player = new Player(name);
@@ -21,5 +21,5 @@ public class Controller {
     List<Player> players = game.getPlayers();
 
 console.displayWelcomeScreen(players.get(0).getName(), players.get(1).getName());
-} */
+}
 }
