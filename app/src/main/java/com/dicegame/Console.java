@@ -35,6 +35,10 @@ public class Console {
         out.print("Welcome to the dice game, " + player1 + " and " + player2 + "!\nPress enter to start playing.");
     }
 
+    public void promptForGameStart() {
+        out.println("\nPress ENTER to start playing.");
+    }
+
     public void displayRoundResult(String string1, String string2, String string3) {
         out.print(string1 + "\n" + 
         string2 + "\n" + 
