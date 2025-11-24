@@ -17,16 +17,22 @@ public class Console {
     }
 
     public String[] promptForPlayerNames() {
-        out.println("Enter name for Player 1:");
-        String player1 = scanner.nextLine();
+        String player1 = "";
+        while (player1.isBlank()) {
+            out.println("Enter name for Player 1:");
+            player1 = scanner.nextLine().trim();
+
+            if (player1.isBlank()) {
+                out.println("Name cannot be empty. Please try again.\n");
+            }
+        }
 
         out.println("Enter name for Player 2 (leave empty to play against the computer):");
         String player2 = scanner.nextLine();
 
-        if (player2 == "") {
+        if (player2.isEmpty()) {
             player2 = "Bot";
         }
-        
         return new String[] { player1, player2 };
     }
 
@@ -46,8 +52,8 @@ public class Console {
     }
 
     public void displayRoundResult(String string1, String string2, String string3) {
-        out.print(string1 + "\n" + 
-        string2 + "\n" + 
-        string3);
+        out.print(string1 + "\n" +
+                string2 + "\n" +
+                string3);
     }
 }
