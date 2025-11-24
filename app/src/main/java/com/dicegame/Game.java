@@ -6,25 +6,13 @@ import java.util.List;
 public class Game {
     private List<Player> players;
     private DiceCup diceCup;
-    private Console console;
 
-    public Game(DiceCup diceCup, Console console) {
+    public Game(DiceCup diceCup) {
         players = new ArrayList<>();
         this.diceCup = diceCup;
-        this.console = console;
     }
 
-    public void setUpGame() {
-            String[] playerNames = console.promptForPlayerNames();
-            for (String name : playerNames) {
-                Player player = new Player(name);
-                addPlayer(player);
-            }
-
-        console.displayWelcomeScreen(players.get(0).getName(), players.get(1).getName());
-    }
-
-    private void addPlayer(Player player) {
+    public void addPlayer(Player player) {
         if (players.size() >= 2) {
             throw new IllegalStateException("Cannot add more than two players");
         }
