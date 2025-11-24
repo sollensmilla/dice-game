@@ -8,7 +8,7 @@ public class MessageTest {
   public void getRoundWinnerMessageShouldContainNameForRoundWinner() {
     Message message = new Message();
     String roundWinnerMessage = "Alice wins this round.";
-    String result = message.getRoundWinnerMessage();
+    String result = message.getRoundWinnerMessage("Alice");
     assertEquals(result, roundWinnerMessage);
   }
 }
