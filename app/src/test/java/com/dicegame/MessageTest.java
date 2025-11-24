@@ -12,6 +12,7 @@ public class MessageTest {
     assertEquals(result, roundWinnerMessage);
   }
 
+  @Test
   public void getRollAndSumMessageShouldPrintMessageForFaceValues() {
     Message message = new Message();
     String faceValueForPlayer = "Alice rolled a sum of 7.";
