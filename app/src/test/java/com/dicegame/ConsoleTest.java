@@ -8,7 +8,6 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 public class ConsoleTest {
     @Test
@@ -81,6 +80,23 @@ public class ConsoleTest {
 
         assertEquals(expected, actual);
 
+    }
+
+    @Test
+    public void promptForGameStartShouldDisplayPromptForUserAction() {
+        String input = "\n";
+        Scanner scanner = new Scanner(input);
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(output);
+
+        Console console = new Console(scanner, printStream);
+
+        console.promptForGameStart();
+
+        assertEquals(
+                "Press ENTER to start playing.",
+                output.toString().trim());
     }
 
     @Test
