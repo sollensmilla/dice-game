@@ -2,6 +2,7 @@ package com.dicegame;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -96,19 +97,17 @@ public class ConsoleTest {
     }
 
     @Test
-    public void promptForGameStartShouldReadPressedKeyForUserInput() {
+    public void promptForGameStartShouldReturnTrueForEnterKey() {
         String input = "\n";
         Scanner scanner = new Scanner(input);
 
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(output);
+        output.reset();
 
         Console console = new Console(scanner, printStream);
 
-        String userInput = console.promptForGameStart();
-        output.reset();
-
-        assertEquals("\n", userInput);
+        assertTrue(console.promptForGameStart());
     }
 
     @Test

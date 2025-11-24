@@ -35,9 +35,14 @@ public class Console {
         out.print("Welcome to the dice game, " + player1 + " and " + player2 + "!");
     }
 
-    public String promptForGameStart() {
+    public boolean promptForGameStart() {
         out.println("\nPress ENTER to start playing.");
-        return "\n";
+        String line = scanner.nextLine();
+        if (line.length() == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void displayRoundResult(String string1, String string2, String string3) {
