@@ -96,6 +96,22 @@ public class ConsoleTest {
     }
 
     @Test
+    public void promptForGameStartShouldReadPressedKeyForUserInput() {
+        String input = "\n";
+        Scanner scanner = new Scanner(input);
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(output);
+
+        Console console = new Console(scanner, printStream);
+
+        String userInput = console.promptForGameStart();
+        output.reset();
+
+        assertEquals("\n", userInput);
+    }
+
+    @Test
     public void displayRoundResultShouldDisplaySumsAndWinnerForEachRound() {
         String input = "Alice\nEva\n";
         Scanner scanner = new Scanner(input);
