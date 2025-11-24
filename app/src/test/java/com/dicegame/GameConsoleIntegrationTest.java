@@ -18,6 +18,7 @@ public class GameConsoleIntegrationTest {
     DiceCup diceCupMock = Mockito.mock(DiceCup.class);
     Game game = new Game(diceCupMock, consoleMock);
     game.setUpGame();
+    Mockito.verify(consoleMock).promptForPlayerNames();
 
     List<Player> players = game.getPlayers();
 

@@ -37,7 +37,10 @@ public class GameTest {
                 .thenReturn(7)
                 .thenReturn(10);
 
-        assertEquals(player2, game.playRound(), "Eva should win with higher roll");
+        Player winner = game.playRound();
+        Mockito.verify(diceCupMock, Mockito.times(2)).rollAndSum();
+        
+        assertEquals(player2, winner, "Eva should win with higher roll");
     }
 
     @Test
