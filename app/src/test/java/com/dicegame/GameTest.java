@@ -20,7 +20,8 @@ public class GameTest {
 
         diceCupMock = Mockito.mock(DiceCup.class);
         game = new Game(diceCupMock, consoleMock);
-        game.setUpGame();
+        Controller controller = new Controller(game, consoleMock);
+        controller.setUpGame();
 
         player1 = game.getPlayers().get(0);
         player2 = game.getPlayers().get(1);
@@ -39,7 +40,7 @@ public class GameTest {
 
         Player winner = game.playRound();
         Mockito.verify(diceCupMock, Mockito.times(2)).rollAndSum();
-        
+
         assertEquals(player2, winner, "Eva should win with higher roll");
     }
 
