@@ -6,6 +6,6 @@ public class Main {
         Game game = new Game(new DiceCup(new Dice(), new Dice()));
         Controller controller = new Controller(game, console);
         controller.setUpGame();
-        game.play();
+        controller.startGame();
     }
 }
