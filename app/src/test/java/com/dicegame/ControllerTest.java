@@ -47,12 +47,12 @@ public class ControllerTest {
   @Test
   public void startGameShouldStartGameForTrue() {
     Console consoleMock = Mockito.mock(Console.class);
-    Mockito.when(consoleMock.promptForGameStart())
-        .thenReturn(true);
+    Mockito.when(consoleMock.promptForGameStart()).thenReturn(true);
 
     Game gameMock = Mockito.mock(Game.class);
+    Mockito.when(gameMock.play()).thenReturn(new Player("Test"));
 
-    Controller controller = new Controller(gameMock, consoleMock, null);
+    Controller controller = new Controller(gameMock, consoleMock, new Message());
     controller.startGame();
 
     Mockito.verify(gameMock).play();
