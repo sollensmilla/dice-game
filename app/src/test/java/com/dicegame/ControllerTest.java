@@ -3,7 +3,6 @@ package com.dicegame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.verify;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -18,7 +17,7 @@ public class ControllerTest {
 
     DiceCup diceCupMock = Mockito.mock(DiceCup.class);
     Game game = new Game(diceCupMock);
-    Controller controller = new Controller(game, consoleMock);
+    Controller controller = new Controller(game, consoleMock, null);
     controller.setUpGame();
     Mockito.verify(consoleMock).promptForPlayerNames();
 
@@ -36,10 +35,10 @@ public class ControllerTest {
         .thenReturn(new String[] { "Alice", "Eva", "Bob" });
 
     Game game = new Game(diceCupMock);
-    Controller controller = new Controller(game, consoleMock);
+    Controller controller = new Controller(game, consoleMock, null);
 
     Exception exception = assertThrows(IllegalStateException.class, () -> {
-      controller.setUpGame();;
+      controller.setUpGame();
     });
 
     assertTrue(exception.getMessage().contains("Cannot add more than two players"));
@@ -53,7 +52,7 @@ public class ControllerTest {
   
     Game gameMock = Mockito.mock(Game.class);
 
-    Controller controller = new Controller(gameMock, consoleMock);
+    Controller controller = new Controller(gameMock, consoleMock, null);
     controller.startGame();
 
     Mockito.verify(gameMock).play();
@@ -71,7 +70,7 @@ public class ControllerTest {
 
     String expected = "Alice wins the game!";
 
-    controller.displayWinner(winner);
+    controller.displayWinner(winner.getName());
 
     Mockito.verify(consoleMock).printMessage(expected);
   }

@@ -5,17 +5,19 @@ import java.util.List;
 public class Controller {
   private Game game;
   private Console console;
+  private Message message;
 
-  public Controller(Game game, Console console) {
+  public Controller(Game game, Console console, Message message) {
     this.game = game;
     this.console = console;
+    this.message = message;
   }
-  
+
   public void setUpGame() {
     String[] playerNames = console.promptForPlayerNames();
     for (String name : playerNames) {
-        Player player = new Player(name);
-        game.addPlayer(player);
+      Player player = new Player(name);
+      game.addPlayer(player);
     }
 
     List<Player> players = game.getPlayers();
@@ -27,5 +29,10 @@ public class Controller {
     if (console.promptForGameStart()) {
       game.play();
     }
+  }
+
+  public void displayWinner(String name) {
+    String message = this.message.getFinalWinnerMessage(name);
+    console.printMessage(message);
   }
 }
