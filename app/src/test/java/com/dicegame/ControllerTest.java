@@ -3,6 +3,7 @@ package com.dicegame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.verify;
 
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -56,5 +57,22 @@ public class ControllerTest {
     controller.startGame();
 
     Mockito.verify(gameMock).play();
+  }
+
+  @Test
+  public void displayWinnerShouldPrintNameForFinalWinner() {
+    Game gameMock = Mockito.mock(Game.class);
+    Console consoleMock = Mockito.mock(Console.class);
+    Message message = new Message();
+
+    Controller controller = new Controller(gameMock, consoleMock, message);
+
+    Player winner = new Player("Alice");
+
+    String expected = "Alice wins the game!";
+
+    controller.displayWinner(winner);
+
+    Mockito.verify(consoleMock).printMessage(expected);
   }
 }
