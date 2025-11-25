@@ -27,7 +27,8 @@ public class Controller {
 
   public void startGame() {
     if (console.promptForGameStart()) {
-      game.play();
+      Player winner = game.play();
+      displayWinner(winner.getName());
     }
   }
 
