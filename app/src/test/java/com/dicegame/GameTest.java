@@ -10,7 +10,6 @@ public class GameTest {
     private Console consoleMock;
     private Game game;
     private Player player1;
-    private Player player2;
 
     @BeforeEach
     public void setUp() {
@@ -24,7 +23,6 @@ public class GameTest {
         controller.setUpGame();
 
         player1 = game.getPlayers().get(0);
-        player2 = game.getPlayers().get(1);
     }
 
     @Test

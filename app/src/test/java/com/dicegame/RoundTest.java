@@ -2,7 +2,6 @@ package com.dicegame;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -18,7 +17,7 @@ public class RoundTest {
         diceCupMock = Mockito.mock(DiceCup.class);
         player1 = new Player("Alice");
         player2 = new Player("Eva");
-        
+
         round = new Round(player1, player2, diceCupMock);
     }
 

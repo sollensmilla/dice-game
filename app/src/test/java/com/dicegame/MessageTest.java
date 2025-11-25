@@ -19,4 +19,12 @@ public class MessageTest {
     String result = message.getRollAndSumMessage("Alice", 7);
     assertEquals(result, faceValueForPlayer);
   }
+
+  @Test
+  public void getFinalWinnerMessageShouldContainNameForFinalWinner() {
+    Message message = new Message();
+    String finalWinnerMessage = "Alice wins the game with a result of 5-2!";
+    String result = message.getFinalWinnerMessage("Alice", 5, 2);
+    assertEquals(result, finalWinnerMessage);
+  }
 }
