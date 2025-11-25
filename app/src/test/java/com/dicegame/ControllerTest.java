@@ -49,7 +49,7 @@ public class ControllerTest {
     Console consoleMock = Mockito.mock(Console.class);
     Mockito.when(consoleMock.promptForGameStart())
         .thenReturn(true);
-  
+
     Game gameMock = Mockito.mock(Game.class);
 
     Controller controller = new Controller(gameMock, consoleMock, null);
@@ -73,5 +73,23 @@ public class ControllerTest {
     controller.displayWinner(winner.getName());
 
     Mockito.verify(consoleMock).printMessage(expected);
+  }
+
+  @Test
+  public void startGameShouldDisplayWinnerForEndedGame() {
+    Console consoleMock = Mockito.mock(Console.class);
+    Mockito.when(consoleMock.promptForGameStart()).thenReturn(true);
+
+    Game gameMock = Mockito.mock(Game.class);
+    Mockito.when(gameMock.play()).thenReturn(new Player("Alice"));
+
+    Message message = new Message();
+
+    Controller controller = new Controller(gameMock, consoleMock, message);
+
+    controller.startGame();
+
+    Mockito.verify(consoleMock)
+        .printMessage("Alice wins the game!");
   }
 }
