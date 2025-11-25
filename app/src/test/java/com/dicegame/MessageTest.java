@@ -23,8 +23,8 @@ public class MessageTest {
   @Test
   public void getFinalWinnerMessageShouldContainNameForFinalWinner() {
     Message message = new Message();
-    String finalWinnerMessage = "Alice wins the game with a result of 5-2!";
-    String result = message.getFinalWinnerMessage("Alice", 5, 2);
+    String finalWinnerMessage = "Alice wins the game!";
+    String result = message.getFinalWinnerMessage("Alice");
     assertEquals(result, finalWinnerMessage);
   }
 }

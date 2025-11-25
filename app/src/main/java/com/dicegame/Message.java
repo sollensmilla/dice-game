@@ -10,7 +10,7 @@ public class Message {
     return playerName + " rolled a sum of " + sum + ".";
   }
 
-  public String getFinalWinnerMessage(String playerName, int playerScore, int opponentScore) {
-    return playerName + " wins the game with a result of " + playerScore + "-" + opponentScore + "!";
+  public String getFinalWinnerMessage(String playerName) {
+    return playerName + " wins the game!";
   }
 }
