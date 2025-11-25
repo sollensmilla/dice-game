@@ -16,6 +16,10 @@ public class Console {
         this.out = out;
     }
 
+    public void printMessage(String message) {
+        out.println(message);
+    }
+
     public String[] promptForPlayerNames() {
         String player1 = "";
         while (player1.isBlank()) {
