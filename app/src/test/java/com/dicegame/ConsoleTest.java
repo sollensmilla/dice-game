@@ -12,6 +12,18 @@ import org.junit.jupiter.api.Test;
 
 public class ConsoleTest {
     @Test
+    public void printMessageShouldPrintGivenMessage() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(output);
+        Scanner fakeScanner = new Scanner("");
+
+        Console console = new Console(fakeScanner, printStream);
+        
+        console.printMessage("Hello, World!");
+
+        assertEquals("Hello, World!", output.toString().trim());
+    }
+    @Test
     public void promptForPlayerNamesShouldReadNamesForGivenInput() {
         String input = "Alice\nEva\n";
         Scanner scanner = new Scanner(input);
