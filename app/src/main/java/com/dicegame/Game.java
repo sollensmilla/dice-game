@@ -35,23 +35,7 @@ public class Game {
     public Player playRound() {
         Player player1 = players.get(0);
         Player player2 = players.get(1);
-        int player1Roll = diceCup.rollAndSum();
-        int player2Roll = diceCup.rollAndSum();
-
-        Player winner = compareFaceValues(player1, player1Roll, player2, player2Roll);
-        if (winner != null) {
-            winner.addScore();
-        }
-        return winner;
-    }
-
-    private Player compareFaceValues(Player player1, int player1Roll, Player player2, int player2Roll) {
-        if (player1Roll > player2Roll) {
-            return player1;
-        } else if (player2Roll > player1Roll) {
-            return player2;
-        } else {
-            return null;
-        }
+        Round round = new Round(player1, player2, diceCup);
+        return round.playRound();
     }
 }
