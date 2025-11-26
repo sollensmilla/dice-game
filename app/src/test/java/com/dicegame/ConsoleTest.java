@@ -18,11 +18,12 @@ public class ConsoleTest {
         Scanner fakeScanner = new Scanner("");
 
         Console console = new Console(fakeScanner, printStream);
-        
+
         console.printMessage("Hello, World!");
 
         assertEquals("Hello, World!", output.toString().trim());
     }
+
     @Test
     public void promptForPlayerNamesShouldReadNamesForGivenInput() {
         String input = "Alice\nEva\n";
@@ -156,17 +157,17 @@ public class ConsoleTest {
     }
 
     @Test
-public void waitForNextRoundShouldDisplayPromptAndWaitForEnter() {
-    Scanner scanner = new Scanner("\n");
+    public void waitForNextRoundShouldDisplayPromptForUserAndWaitForEnter() {
+        Scanner scanner = new Scanner("\n");
 
-    ByteArrayOutputStream output = new ByteArrayOutputStream();
-    PrintStream printStream = new PrintStream(output);
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(output);
 
-    Console console = new Console(scanner, printStream);
+        Console console = new Console(scanner, printStream);
 
-    console.waitForNextRound();
+        console.waitForNextRound();
 
-    assertEquals("Press ENTER for next round...", output.toString().trim());
-}
+        assertEquals("Press ENTER for next round...", output.toString().trim());
+    }
 
 }

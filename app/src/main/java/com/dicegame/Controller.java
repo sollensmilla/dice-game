@@ -37,16 +37,22 @@ public class Controller {
     console.printMessage(message);
   }
 
-  public void displayRoundResult(RoundResult roundResult) {
-    String player1Sum = this.message.getRollAndSumMessage(roundResult.getPlayer1().getName(), roundResult.getSum1());
-    String player2Sum = this.message.getRollAndSumMessage(roundResult.getPlayer2().getName(), roundResult.getSum2());
+public void displayRoundResult(RoundResult roundResult) {
+    String player1Sum = this.message.getRollAndSumMessage(
+            roundResult.getPlayer1().getName(), roundResult.getSum1());
+    String player2Sum = this.message.getRollAndSumMessage(
+            roundResult.getPlayer2().getName(), roundResult.getSum2());
     Player roundWinner = roundResult.getWinner();
     String roundWinnerMessage;
-    if (roundWinner == null ) {
-      roundWinnerMessage = "It's a tie.";
+    if (roundWinner == null) {
+        roundWinnerMessage = "It's a tie.";
     } else {
-      roundWinnerMessage = this.message.getRoundWinnerMessage(roundWinner.getName());
+        roundWinnerMessage = this.message.getRoundWinnerMessage(roundWinner.getName());
     }
-    console.printMessage(player1Sum + "\n" + player2Sum + "\n"+ roundWinnerMessage);
-  }
+
+    console.printMessage(player1Sum + "\n" + player2Sum + "\n" + roundWinnerMessage);
+
+    console.waitForNextRound();
+}
+
 }
