@@ -27,4 +27,25 @@ public class MessageTest {
     String result = message.getFinalWinnerMessage("Alice");
     assertEquals(result, finalWinnerMessage);
   }
+
+  @Test
+  public void getScoreMessageShouldPrintCurrentScoreForBothPlayers() {
+    Message message = new Message();
+
+    Player player1 = new Player("Alice");
+    Player player2 = new Player("Eva");
+
+    player1.addScore();
+    player1.addScore();
+    player2.addScore();
+
+    String expected = "Points after round:\n" +
+        "Alice: 2\n" +
+        "Eva: 1";
+
+    String result = message.getScoreMessage(player1, player2);
+
+    assertEquals(expected, result);
+  }
+
 }
