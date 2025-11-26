@@ -68,6 +68,15 @@ public class ControllerTest {
   }
 
   @Test
+  public void startGameShouldDisplayGoodByeMessageForFalse() {
+    Mockito.when(consoleMock.promptForGameStart()).thenReturn(false);
+
+    controller.startGame();
+
+    Mockito.verify(consoleMock).printMessage("Good bye!");
+  }
+
+  @Test
   public void displayWinnerShouldPrintNameForFinalWinner() {
     Player winner = new Player("Alice");
     String expected = "Alice wins the game!";
