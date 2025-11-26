@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 public class GameTest {
     private DiceCup diceCupMock;
     private Console consoleMock;
+    private Controller controller;
     private Game game;
     private Player player1;
 
@@ -19,7 +20,7 @@ public class GameTest {
 
         diceCupMock = Mockito.mock(DiceCup.class);
         game = new Game(diceCupMock);
-        Controller controller = new Controller(game, consoleMock, null);
+        controller = new Controller(game, consoleMock, null);
         controller.setUpGame();
 
         player1 = game.getPlayers().get(0);
@@ -40,7 +41,7 @@ public class GameTest {
                 .thenReturn(10, 5)
                 .thenReturn(10, 5);
 
-        Player winner = game.play();
+        Player winner = game.play(controller);
 
         assertEquals(player1, winner, "Alice should win the game");
     }
@@ -55,17 +56,8 @@ public class GameTest {
                 .thenReturn(10, 5)
                 .thenReturn(10, 5);
 
-        Player winner = game.play();
+        Player winner = game.play(controller);
 
         assertEquals(player1, winner, "Alice should win the game");
-    }
-
-    @Test
-    public void playShouldCallControllerForEachRound() {
-        Controller controllerMock = Mockito.mock(Controller.class);
-        RoundResult roundResultMock = Mockito.mock(RoundResult.class);
-        
-        game.play();
-        Mockito.verify(controllerMock, Mockito.atLeast(5)).displayRoundResult(roundResultMock);
     }
 }

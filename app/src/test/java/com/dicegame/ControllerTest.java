@@ -50,12 +50,12 @@ public class ControllerTest {
     Mockito.when(consoleMock.promptForGameStart()).thenReturn(true);
 
     Game gameMock = Mockito.mock(Game.class);
-    Mockito.when(gameMock.play()).thenReturn(new Player("Test"));
-
     Controller controller = new Controller(gameMock, consoleMock, new Message());
+    Mockito.when(gameMock.play(controller)).thenReturn(new Player("Test"));
+
     controller.startGame();
 
-    Mockito.verify(gameMock).play();
+    Mockito.verify(gameMock).play(controller);
   }
 
   @Test
@@ -81,15 +81,35 @@ public class ControllerTest {
     Mockito.when(consoleMock.promptForGameStart()).thenReturn(true);
 
     Game gameMock = Mockito.mock(Game.class);
-    Mockito.when(gameMock.play()).thenReturn(new Player("Alice"));
-
     Message message = new Message();
-
     Controller controller = new Controller(gameMock, consoleMock, message);
+    
+    Mockito.when(gameMock.play(controller)).thenReturn(new Player("Alice"));
 
     controller.startGame();
 
     Mockito.verify(consoleMock)
         .printMessage("Alice wins the game!");
+  }
+
+  @Test
+  public void displayRoundResultShouldDisplayResultForRound() {
+    Game gameMock = Mockito.mock(Game.class);
+    Console consoleMock = Mockito.mock(Console.class);
+    Message message = new Message();
+
+    Controller controller = new Controller(gameMock, consoleMock, message);
+
+    Player player1 = new Player("Alice");
+    Player player2 = new Player("Eva");
+    RoundResult roundResult = new RoundResult(player1, 7, player2, 5, player1);
+
+    String expected = "Alice rolled a sum of 7." +
+        "\nEva rolled a sum of 5" +
+        "\nAlice wins this round!";
+
+    controller.displayRoundResult(roundResult);
+
+    Mockito.verify(consoleMock).printMessage(expected);
   }
 }
