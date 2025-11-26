@@ -5,20 +5,34 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 public class ControllerTest {
+  private Message message;
+  private Console consoleMock;
+  private Game gameMock;
+  private Controller controller;
+
+  @BeforeEach
+  public void setUp() {
+    message = new Message();
+    consoleMock = Mockito.mock(Console.class);
+    gameMock = Mockito.mock(Game.class);
+    controller = new Controller(gameMock, consoleMock, message);
+  }
+
   @Test
   public void setUpGameShouldAddPlayersToGameForGivenPlayers() {
-    Console consoleMock = Mockito.mock(Console.class);
     Mockito.when(consoleMock.promptForPlayerNames())
         .thenReturn(new String[] { "Alice", "Eva" });
 
     DiceCup diceCupMock = Mockito.mock(DiceCup.class);
     Game game = new Game(diceCupMock);
-    Controller controller = new Controller(game, consoleMock, null);
-    controller.setUpGame();
+    Controller localController = new Controller(game, consoleMock, message);
+    localController.setUpGame();
     Mockito.verify(consoleMock).promptForPlayerNames();
 
     List<Player> players = game.getPlayers();
@@ -29,16 +43,15 @@ public class ControllerTest {
 
   @Test
   public void setUpGameShouldThrowExceptionForMoreThanTwoPlayers() {
-    Console consoleMock = Mockito.mock(Console.class);
     DiceCup diceCupMock = Mockito.mock(DiceCup.class);
     Mockito.when(consoleMock.promptForPlayerNames())
         .thenReturn(new String[] { "Alice", "Eva", "Bob" });
 
     Game game = new Game(diceCupMock);
-    Controller controller = new Controller(game, consoleMock, null);
+    Controller localController = new Controller(game, consoleMock, message);
 
     Exception exception = assertThrows(IllegalStateException.class, () -> {
-      controller.setUpGame();
+      localController.setUpGame();
     });
 
     assertTrue(exception.getMessage().contains("Cannot add more than two players"));
@@ -46,11 +59,7 @@ public class ControllerTest {
 
   @Test
   public void startGameShouldStartGameForTrue() {
-    Console consoleMock = Mockito.mock(Console.class);
     Mockito.when(consoleMock.promptForGameStart()).thenReturn(true);
-
-    Game gameMock = Mockito.mock(Game.class);
-    Controller controller = new Controller(gameMock, consoleMock, new Message());
     Mockito.when(gameMock.play(controller)).thenReturn(new Player("Test"));
 
     controller.startGame();
@@ -60,14 +69,7 @@ public class ControllerTest {
 
   @Test
   public void displayWinnerShouldPrintNameForFinalWinner() {
-    Game gameMock = Mockito.mock(Game.class);
-    Console consoleMock = Mockito.mock(Console.class);
-    Message message = new Message();
-
-    Controller controller = new Controller(gameMock, consoleMock, message);
-
     Player winner = new Player("Alice");
-
     String expected = "Alice wins the game!";
 
     controller.displayWinner(winner.getName());
@@ -77,13 +79,7 @@ public class ControllerTest {
 
   @Test
   public void startGameShouldDisplayWinnerForEndedGame() {
-    Console consoleMock = Mockito.mock(Console.class);
     Mockito.when(consoleMock.promptForGameStart()).thenReturn(true);
-
-    Game gameMock = Mockito.mock(Game.class);
-    Message message = new Message();
-    Controller controller = new Controller(gameMock, consoleMock, message);
-    
     Mockito.when(gameMock.play(controller)).thenReturn(new Player("Alice"));
 
     controller.startGame();
@@ -94,12 +90,6 @@ public class ControllerTest {
 
   @Test
   public void displayRoundResultShouldDisplayResultForRound() {
-    Game gameMock = Mockito.mock(Game.class);
-    Console consoleMock = Mockito.mock(Console.class);
-    Message message = new Message();
-
-    Controller controller = new Controller(gameMock, consoleMock, message);
-
     Player player1 = new Player("Alice");
     Player player2 = new Player("Eva");
     RoundResult roundResult = new RoundResult(player1, 7, player2, 5, player1);
@@ -115,12 +105,6 @@ public class ControllerTest {
 
   @Test
   public void displayRoundResultShouldDisplayResultForPlayerTie() {
-    Game gameMock = Mockito.mock(Game.class);
-    Console consoleMock = Mockito.mock(Console.class);
-    Message message = new Message();
-
-    Controller controller = new Controller(gameMock, consoleMock, message);
-
     Player player1 = new Player("Alice");
     Player player2 = new Player("Eva");
     RoundResult roundResult = new RoundResult(player1, 5, player2, 5, null);
