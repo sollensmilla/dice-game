@@ -112,4 +112,25 @@ public class ControllerTest {
 
     Mockito.verify(consoleMock).printMessage(expected);
   }
+
+  @Test
+  public void displayRoundResultShouldDisplayResultForPlayerTie() {
+    Game gameMock = Mockito.mock(Game.class);
+    Console consoleMock = Mockito.mock(Console.class);
+    Message message = new Message();
+
+    Controller controller = new Controller(gameMock, consoleMock, message);
+
+    Player player1 = new Player("Alice");
+    Player player2 = new Player("Eva");
+    RoundResult roundResult = new RoundResult(player1, 5, player2, 5, null);
+
+    String expected = "Alice rolled a sum of 5." +
+        "\nEva rolled a sum of 5." +
+        "\nIt's a tie.'";
+
+    controller.displayRoundResult(roundResult);
+
+    Mockito.verify(consoleMock).printMessage(expected);
+  }
 }
