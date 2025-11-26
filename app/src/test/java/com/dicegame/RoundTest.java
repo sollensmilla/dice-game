@@ -27,10 +27,10 @@ public class RoundTest {
                 .thenReturn(7)
                 .thenReturn(10);
 
-        Player winner = round.playRound();
+        RoundResult roundResult = round.playRound();
         Mockito.verify(diceCupMock, Mockito.times(2)).rollAndSum();
 
-        assertEquals(player2, winner, "Eva should win with higher roll");
+        assertEquals(player2, roundResult.getWinner());
     }
 
     @Test

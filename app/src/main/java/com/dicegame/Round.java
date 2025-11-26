@@ -11,7 +11,7 @@ public class Round {
         this.diceCup = diceCup;
     }
 
-      public Player playRound() {
+      public RoundResult playRound() {
         int player1Roll = diceCup.rollAndSum();
         int player2Roll = diceCup.rollAndSum();
 
@@ -19,7 +19,7 @@ public class Round {
         if (winner != null) {
             winner.addScore();
         }
-        return winner;
+        return new RoundResult(player1, player1Roll, player2, player2Roll, winner);
     }
 
     private Player compareFaceValues(int player1Roll, int player2Roll) {
