@@ -33,5 +33,10 @@ public class RoundResultTest {
   public void getSum1ShouldReturnSumForPlayer1() {
     assertEquals(7, roundResult.getSum1());
   }
+
+  @Test
+  public void getSum2ShouldReturnSumForPlayer2() {
+    assertEquals(10, roundResult.getSum2());
+  }
   
 }
