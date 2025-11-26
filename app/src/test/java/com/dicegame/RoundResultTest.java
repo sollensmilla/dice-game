@@ -23,5 +23,10 @@ public class RoundResultTest {
   public void getPlayer1ShouldReturnNameForPlayer1() {
     assertEquals("Alice", roundResult.getPlayer1());
   }
+
+  @Test
+  public void getPlayer2ShouldReturnNameForPlayer2() {
+    assertEquals("Eva", roundResult.getPlayer2());
+  }
   
 }
