@@ -28,5 +28,10 @@ public class RoundResultTest {
   public void getPlayer2ShouldReturnNameForPlayer2() {
     assertEquals("Eva", roundResult.getPlayer2());
   }
+
+  @Test
+  public void getSum1ShouldReturnSumForPlayer1() {
+    assertEquals(7, roundResult.getSum1());
+  }
   
 }
