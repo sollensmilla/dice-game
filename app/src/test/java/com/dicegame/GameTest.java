@@ -59,4 +59,13 @@ public class GameTest {
 
         assertEquals(player1, winner, "Alice should win the game");
     }
+
+    @Test
+    public void playShouldCallControllerForEachRound() {
+        Controller controllerMock = Mockito.mock(Controller.class);
+        RoundResult roundResultMock = Mockito.mock(RoundResult.class);
+        
+        game.play();
+        Mockito.verify(controllerMock, Mockito.atLeast(5)).displayRoundResult(roundResultMock);
+    }
 }
