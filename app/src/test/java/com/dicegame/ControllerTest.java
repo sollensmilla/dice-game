@@ -127,7 +127,7 @@ public class ControllerTest {
 
     String expected = "Alice rolled a sum of 5." +
         "\nEva rolled a sum of 5." +
-        "\nIt's a tie.'";
+        "\nIt's a tie.";
 
     controller.displayRoundResult(roundResult);
 
