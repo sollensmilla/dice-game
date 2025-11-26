@@ -29,6 +29,8 @@ public class Controller {
     if (console.promptForGameStart()) {
       Player winner = game.play(this);
       displayWinner(winner.getName());
+    } else {
+      console.printMessage("Good bye!");
     }
   }
 
