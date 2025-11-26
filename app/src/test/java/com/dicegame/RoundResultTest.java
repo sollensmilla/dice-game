@@ -7,26 +7,27 @@ import org.junit.jupiter.api.Test;
 
 public class RoundResultTest {
   private RoundResult roundResult;
+  private Player player1;
+  private Player player2;
 
   @BeforeEach
   public void setUp() {
-    String player1 = "Alice";
+    player1 = new Player("Alice");
     int sum1 = 7;
-    String player2 = "Eva";
+    player2 = new Player("Eva");
     int sum2 = 10;
-    String winner = "Eva";
 
-    roundResult = new RoundResult(player1, sum1, player2, sum2, winner);
+    roundResult = new RoundResult(player1, sum1, player2, sum2, player2);
   }
 
   @Test
-  public void getPlayer1ShouldReturnNameForPlayer1() {
-    assertEquals("Alice", roundResult.getPlayer1());
+  public void getPlayer1ShouldReturnPlayerObjectForPlayer1() {
+    assertEquals(player1, roundResult.getPlayer1());
   }
 
   @Test
-  public void getPlayer2ShouldReturnNameForPlayer2() {
-    assertEquals("Eva", roundResult.getPlayer2());
+  public void getPlayer2ShouldReturnPlayerObjectForPlayer2() {
+    assertEquals(player2, roundResult.getPlayer2());
   }
 
   @Test
@@ -40,7 +41,7 @@ public class RoundResultTest {
   }
   
   @Test
-  public void getWinnerShouldReturnNameForWinner() {
-    assertEquals("Eva", roundResult.getWinner());
+  public void getWinnerShouldReturnPlayerObjectForWinner() {
+    assertEquals(player2, roundResult.getWinner());
   }
 }

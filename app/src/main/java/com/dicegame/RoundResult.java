@@ -1,13 +1,13 @@
 package com.dicegame;
 
 public class RoundResult {
-  private String player1;
+  private Player player1;
   private int sum1;
-  private String player2;
+  private Player player2;
   private int sum2;
-  private String winner;
+  private Player winner;
 
-  public RoundResult(String player1, int sum1, String player2, int sum2, String winner) {
+  public RoundResult(Player player1, int sum1, Player player2, int sum2, Player winner) {
     this.player1 = player1;
     this.sum1 = sum1;
     this.player2 = player2;
@@ -15,11 +15,11 @@ public class RoundResult {
     this.winner = winner;
   }
 
-  public String getPlayer1() {
+  public Player getPlayer1() {
     return player1;
   }
 
-  public String getPlayer2() {
+  public Player getPlayer2() {
     return player2;
   }
 
@@ -31,7 +31,7 @@ public class RoundResult {
     return sum2;
   }
 
-  public String getWinner() {
+  public Player getWinner() {
     return winner;
   }
 }
