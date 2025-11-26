@@ -26,4 +26,8 @@ public class RoundResult {
   public int getSum1() {
     return sum1;
   }
+
+  public int getSum2() {
+    return sum2;
+  }
 }
