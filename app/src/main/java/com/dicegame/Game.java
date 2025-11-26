@@ -23,16 +23,18 @@ public class Game {
         return players;
     }
 
-    public Player play() {
+    public Player play(Controller controller) {
         while (true) {
-            Player roundWinner = playRound();
+            RoundResult result = playRound();
+            controller.displayRoundResult(result);
+            Player roundWinner = result.getWinner();
             if (roundWinner != null && roundWinner.getScore() >= 5) {
                 return roundWinner;
             }
         }
     }
 
-    public Player playRound() {
+    public RoundResult playRound() {
         Player player1 = players.get(0);
         Player player2 = players.get(1);
         Round round = new Round(player1, player2, diceCup);

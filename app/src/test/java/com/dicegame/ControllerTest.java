@@ -105,8 +105,8 @@ public class ControllerTest {
     RoundResult roundResult = new RoundResult(player1, 7, player2, 5, player1);
 
     String expected = "Alice rolled a sum of 7." +
-        "\nEva rolled a sum of 5" +
-        "\nAlice wins this round!";
+        "\nEva rolled a sum of 5." +
+        "\nAlice wins this round.";
 
     controller.displayRoundResult(roundResult);
 
