@@ -39,4 +39,8 @@ public class RoundResultTest {
     assertEquals(10, roundResult.getSum2());
   }
   
+  @Test
+  public void getWinnerShouldReturnNameForWinner() {
+    assertEquals("Eva", roundResult.getWinner());
+  }
 }
