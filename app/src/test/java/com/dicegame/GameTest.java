@@ -20,7 +20,8 @@ public class GameTest {
 
         diceCupMock = Mockito.mock(DiceCup.class);
         game = new Game(diceCupMock);
-        controller = new Controller(game, consoleMock, null);
+        Message message = Mockito.mock(Message.class);
+        controller = new Controller(game, consoleMock, message);
         controller.setUpGame();
 
         player1 = game.getPlayers().get(0);
