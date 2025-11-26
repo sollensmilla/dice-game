@@ -60,4 +60,10 @@ public class Console {
                 string2 + "\n" +
                 string3);
     }
+
+    public void waitForNextRound() {
+    out.println("Press ENTER for next round...");
+    scanner.nextLine();
+}
+
 }
