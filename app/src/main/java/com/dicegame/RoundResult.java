@@ -30,4 +30,8 @@ public class RoundResult {
   public int getSum2() {
     return sum2;
   }
+
+  public String getWinner() {
+    return winner;
+  }
 }
