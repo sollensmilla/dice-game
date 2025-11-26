@@ -2,6 +2,7 @@ package com.dicegame;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
@@ -136,6 +137,20 @@ public class ConsoleTest {
         Console console = new Console(scanner, printStream);
 
         assertTrue(console.promptForGameStart());
+    }
+
+    @Test
+    public void promptForGameStartShouldReturnFalseForOtherInputThanEnterKey() {
+        String input = "Test\n";
+        Scanner scanner = new Scanner(input);
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(output);
+        output.reset();
+
+        Console console = new Console(scanner, printStream);
+
+        assertFalse(console.promptForGameStart());
     }
 
     @Test
