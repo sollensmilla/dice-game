@@ -22,4 +22,8 @@ public class RoundResult {
   public String getPlayer2() {
     return player2;
   }
+
+  public int getSum1() {
+    return sum1;
+  }
 }
