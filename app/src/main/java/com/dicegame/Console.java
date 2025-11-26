@@ -7,10 +7,6 @@ public class Console {
     private Scanner scanner;
     private PrintStream out;
 
-    public Console() {
-        this(new Scanner(System.in), System.out);
-    }
-
     public Console(Scanner scanner, PrintStream out) {
         this.scanner = scanner;
         this.out = out;
@@ -62,8 +58,8 @@ public class Console {
     }
 
     public void waitForNextRound() {
-    out.println("Press ENTER for next round...");
-    scanner.nextLine();
+        out.println("Press ENTER for next round...");
+        scanner.nextLine();
 }
 
 }
