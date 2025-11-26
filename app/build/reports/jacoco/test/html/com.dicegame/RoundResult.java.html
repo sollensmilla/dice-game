@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RoundResult.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">com.dicegame</a> &gt; <span class="el_source">RoundResult.java</span></div><h1>RoundResult.java</h1><pre class="source lang-java linenums">package com.dicegame;
+
+public class RoundResult {
+  private Player player1;
+  private int sum1;
+  private Player player2;
+  private int sum2;
+  private Player winner;
+
+<span class="fc" id="L10">  public RoundResult(Player player1, int sum1, Player player2, int sum2, Player winner) {</span>
+<span class="fc" id="L11">    this.player1 = player1;</span>
+<span class="fc" id="L12">    this.sum1 = sum1;</span>
+<span class="fc" id="L13">    this.player2 = player2;</span>
+<span class="fc" id="L14">    this.sum2 = sum2;</span>
+<span class="fc" id="L15">    this.winner = winner;</span>
+<span class="fc" id="L16">  }</span>
+
+  public Player getPlayer1() {
+<span class="fc" id="L19">    return player1;</span>
+  }
+
+  public Player getPlayer2() {
+<span class="fc" id="L23">    return player2;</span>
+  }
+
+  public int getSum1() {
+<span class="fc" id="L27">    return sum1;</span>
+  }
+
+  public int getSum2() {
+<span class="fc" id="L31">    return sum2;</span>
+  }
+
+  public Player getWinner() {
+<span class="fc" id="L35">    return winner;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

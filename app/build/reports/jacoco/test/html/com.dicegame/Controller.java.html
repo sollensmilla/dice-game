@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Controller.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">com.dicegame</a> &gt; <span class="el_source">Controller.java</span></div><h1>Controller.java</h1><pre class="source lang-java linenums">package com.dicegame;
+
+import java.util.List;
+
+public class Controller {
+  private Game game;
+  private Console console;
+  private Message message;
+
+<span class="fc" id="L10">  public Controller(Game game, Console console, Message message) {</span>
+<span class="fc" id="L11">    this.game = game;</span>
+<span class="fc" id="L12">    this.console = console;</span>
+<span class="fc" id="L13">    this.message = message;</span>
+<span class="fc" id="L14">  }</span>
+
+  public void setUpGame() {
+<span class="fc" id="L17">    String[] playerNames = console.promptForPlayerNames();</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">    for (String name : playerNames) {</span>
+<span class="fc" id="L19">      Player player = new Player(name);</span>
+<span class="fc" id="L20">      game.addPlayer(player);</span>
+    }
+
+<span class="fc" id="L23">    List&lt;Player&gt; players = game.getPlayers();</span>
+
+<span class="fc" id="L25">    console.displayWelcomeScreen(players.get(0).getName(), players.get(1).getName());</span>
+<span class="fc" id="L26">  }</span>
+
+  public void startGame() {
+<span class="fc bfc" id="L29" title="All 2 branches covered.">    if (console.promptForGameStart()) {</span>
+<span class="fc" id="L30">      Player winner = game.play(this);</span>
+<span class="fc" id="L31">      displayWinner(winner.getName());</span>
+<span class="fc" id="L32">    } else {</span>
+<span class="fc" id="L33">      console.printMessage(&quot;Good bye!&quot;);</span>
+    }
+<span class="fc" id="L35">  }</span>
+
+  public void displayWinner(String name) {
+<span class="fc" id="L38">    String message = this.message.getFinalWinnerMessage(name);</span>
+<span class="fc" id="L39">    console.printMessage(message);</span>
+<span class="fc" id="L40">  }</span>
+
+public void displayRoundResult(RoundResult roundResult) {
+<span class="fc" id="L43">    String player1Sum = this.message.getRollAndSumMessage(</span>
+<span class="fc" id="L44">            roundResult.getPlayer1().getName(), roundResult.getSum1());</span>
+<span class="fc" id="L45">    String player2Sum = this.message.getRollAndSumMessage(</span>
+<span class="fc" id="L46">            roundResult.getPlayer2().getName(), roundResult.getSum2());</span>
+<span class="fc" id="L47">    Player roundWinner = roundResult.getWinner();</span>
+    String roundWinnerMessage;
+<span class="fc bfc" id="L49" title="All 2 branches covered.">    if (roundWinner == null) {</span>
+<span class="fc" id="L50">        roundWinnerMessage = &quot;It's a tie.&quot;;</span>
+    } else {
+<span class="fc" id="L52">        roundWinnerMessage = this.message.getRoundWinnerMessage(roundWinner.getName());</span>
+    }
+
+<span class="fc" id="L55">    console.printMessage(player1Sum + &quot;\n&quot; + player2Sum + &quot;\n&quot; + roundWinnerMessage);</span>
+
+<span class="fc" id="L57">    console.waitForNextRound();</span>
+<span class="fc" id="L58">}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

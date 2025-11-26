@@ -25,9 +25,11 @@ replay_pid*
 .DS_Store
 
 # Build output
-app/build
+/build/
+app/build/*
+!app/build/reports/
+!app/build/reports/**
 app/bin
-build/
 out/
 
 # Gradle
