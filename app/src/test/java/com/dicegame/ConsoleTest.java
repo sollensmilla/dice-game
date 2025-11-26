@@ -154,4 +154,19 @@ public class ConsoleTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+public void waitForNextRoundShouldDisplayPromptAndWaitForEnter() {
+    Scanner scanner = new Scanner("\n");
+
+    ByteArrayOutputStream output = new ByteArrayOutputStream();
+    PrintStream printStream = new PrintStream(output);
+
+    Console console = new Console(scanner, printStream);
+
+    console.waitForNextRound();
+
+    assertEquals("Press ENTER for next round...", output.toString().trim());
+}
+
 }
