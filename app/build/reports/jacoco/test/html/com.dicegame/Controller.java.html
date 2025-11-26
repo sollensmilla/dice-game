@@ -39,23 +39,32 @@ public class Controller {
 <span class="fc" id="L39">    console.printMessage(message);</span>
 <span class="fc" id="L40">  }</span>
 
-public void displayRoundResult(RoundResult roundResult) {
+  public void displayRoundResult(RoundResult roundResult) {
 <span class="fc" id="L43">    String player1Sum = this.message.getRollAndSumMessage(</span>
-<span class="fc" id="L44">            roundResult.getPlayer1().getName(), roundResult.getSum1());</span>
+<span class="fc" id="L44">        roundResult.getPlayer1().getName(), roundResult.getSum1());</span>
 <span class="fc" id="L45">    String player2Sum = this.message.getRollAndSumMessage(</span>
-<span class="fc" id="L46">            roundResult.getPlayer2().getName(), roundResult.getSum2());</span>
-<span class="fc" id="L47">    Player roundWinner = roundResult.getWinner();</span>
+<span class="fc" id="L46">        roundResult.getPlayer2().getName(), roundResult.getSum2());</span>
+
+<span class="fc" id="L48">    Player roundWinner = roundResult.getWinner();</span>
     String roundWinnerMessage;
-<span class="fc bfc" id="L49" title="All 2 branches covered.">    if (roundWinner == null) {</span>
-<span class="fc" id="L50">        roundWinnerMessage = &quot;It's a tie.&quot;;</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">    if (roundWinner == null) {</span>
+<span class="fc" id="L51">      roundWinnerMessage = &quot;It's a tie.&quot;;</span>
     } else {
-<span class="fc" id="L52">        roundWinnerMessage = this.message.getRoundWinnerMessage(roundWinner.getName());</span>
+<span class="fc" id="L53">      roundWinnerMessage = this.message.getRoundWinnerMessage(roundWinner.getName());</span>
     }
 
-<span class="fc" id="L55">    console.printMessage(player1Sum + &quot;\n&quot; + player2Sum + &quot;\n&quot; + roundWinnerMessage);</span>
+<span class="fc" id="L56">    String scoreMessage = this.message.getScoreMessage(</span>
+<span class="fc" id="L57">        roundResult.getPlayer1(), roundResult.getPlayer2());</span>
 
-<span class="fc" id="L57">    console.waitForNextRound();</span>
-<span class="fc" id="L58">}</span>
+<span class="fc" id="L59">    console.printMessage(</span>
+        player1Sum + &quot;\n&quot; +
+            player2Sum + &quot;\n&quot; +
+            roundWinnerMessage + &quot;\n\n&quot; +
+            scoreMessage
+    );
+
+<span class="fc" id="L66">    console.waitForNextRound();</span>
+<span class="fc" id="L67">  }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

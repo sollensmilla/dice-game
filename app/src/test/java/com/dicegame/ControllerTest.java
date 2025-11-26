@@ -99,13 +99,27 @@ public class ControllerTest {
 
   @Test
   public void displayRoundResultShouldDisplayResultForRound() {
-    Player player1 = new Player("Alice");
-    Player player2 = new Player("Eva");
-    RoundResult roundResult = new RoundResult(player1, 7, player2, 5, player1);
+    Player player1 = Mockito.mock(Player.class);
+    Player player2 = Mockito.mock(Player.class);
 
-    String expected = "Alice rolled a sum of 7." +
-        "\nEva rolled a sum of 5." +
-        "\nAlice wins this round.";
+    Mockito.when(player1.getName()).thenReturn("Alice");
+    Mockito.when(player2.getName()).thenReturn("Eva");
+    Mockito.when(player1.getScore()).thenReturn(1);
+    Mockito.when(player2.getScore()).thenReturn(0);
+
+    RoundResult roundResult = Mockito.mock(RoundResult.class);
+    Mockito.when(roundResult.getPlayer1()).thenReturn(player1);
+    Mockito.when(roundResult.getPlayer2()).thenReturn(player2);
+    Mockito.when(roundResult.getSum1()).thenReturn(7);
+    Mockito.when(roundResult.getSum2()).thenReturn(5);
+    Mockito.when(roundResult.getWinner()).thenReturn(player1);
+
+    String expected = "Alice rolled a sum of 7.\n" +
+        "Eva rolled a sum of 5.\n" +
+        "Alice wins this round.\n\n" +
+        "Points after round:\n" +
+        "Alice: 1\n" +
+        "Eva: 0";
 
     controller.displayRoundResult(roundResult);
 
@@ -114,13 +128,27 @@ public class ControllerTest {
 
   @Test
   public void displayRoundResultShouldDisplayResultForPlayerTie() {
-    Player player1 = new Player("Alice");
-    Player player2 = new Player("Eva");
-    RoundResult roundResult = new RoundResult(player1, 5, player2, 5, null);
+    Player player1 = Mockito.mock(Player.class);
+    Player player2 = Mockito.mock(Player.class);
 
-    String expected = "Alice rolled a sum of 5." +
-        "\nEva rolled a sum of 5." +
-        "\nIt's a tie.";
+    Mockito.when(player1.getName()).thenReturn("Alice");
+    Mockito.when(player2.getName()).thenReturn("Eva");
+    Mockito.when(player1.getScore()).thenReturn(0);
+    Mockito.when(player2.getScore()).thenReturn(0);
+
+    RoundResult roundResult = Mockito.mock(RoundResult.class);
+    Mockito.when(roundResult.getPlayer1()).thenReturn(player1);
+    Mockito.when(roundResult.getPlayer2()).thenReturn(player2);
+    Mockito.when(roundResult.getSum1()).thenReturn(5);
+    Mockito.when(roundResult.getSum2()).thenReturn(5);
+    Mockito.when(roundResult.getWinner()).thenReturn(null);
+
+    String expected = "Alice rolled a sum of 5.\n" +
+        "Eva rolled a sum of 5.\n" +
+        "It's a tie.\n\n" +
+        "Points after round:\n" +
+        "Alice: 0\n" +
+        "Eva: 0";
 
     controller.displayRoundResult(roundResult);
 
