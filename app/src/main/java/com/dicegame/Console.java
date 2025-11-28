@@ -17,7 +17,14 @@ public class Console {
     }
 
     public String[] promptForPlayerNames() {
-        String player1 = "";
+        String player1 = promptForPlayer1();
+        String player2 = promptForPlayer2();
+
+        return new String[] { player1, player2 };
+    }
+
+    private String promptForPlayer1() {
+                String player1 = "";
         while (player1.isBlank()) {
             this.printMessage("Enter name for Player 1:");
             player1 = scanner.nextLine().trim();
@@ -26,14 +33,17 @@ public class Console {
                 this.printMessage("Name cannot be empty. Please try again.\n");
             }
         }
+        return player1;
+    }
 
+    private String promptForPlayer2() {
         this.printMessage("Enter name for Player 2 (leave empty to play against the computer):");
         String player2 = scanner.nextLine();
 
         if (player2.isEmpty()) {
             player2 = "Bot";
         }
-        return new String[] { player1, player2 };
+        return player2;
     }
 
     public boolean promptForGameStart() {
@@ -45,7 +55,7 @@ public class Console {
             return false;
         }
     }
-    
+
     public void waitForNextRound() {
         this.printMessage("Press ENTER for next round...");
         scanner.nextLine();

@@ -17,39 +17,49 @@ public class Console {
 <span class="fc" id="L17">    }</span>
 
     public String[] promptForPlayerNames() {
-<span class="fc" id="L20">        String player1 = &quot;&quot;;</span>
-<span class="fc bfc" id="L21" title="All 2 branches covered.">        while (player1.isBlank()) {</span>
-<span class="fc" id="L22">            this.printMessage(&quot;Enter name for Player 1:&quot;);</span>
-<span class="fc" id="L23">            player1 = scanner.nextLine().trim();</span>
+<span class="fc" id="L20">        String player1 = promptForPlayer1();</span>
+<span class="fc" id="L21">        String player2 = promptForPlayer2();</span>
 
-<span class="fc bfc" id="L25" title="All 2 branches covered.">            if (player1.isBlank()) {</span>
-<span class="fc" id="L26">                this.printMessage(&quot;Name cannot be empty. Please try again.\n&quot;);</span>
+<span class="fc" id="L23">        return new String[] { player1, player2 };</span>
+    }
+
+    private String promptForPlayer1() {
+<span class="fc" id="L27">                String player1 = &quot;&quot;;</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        while (player1.isBlank()) {</span>
+<span class="fc" id="L29">            this.printMessage(&quot;Enter name for Player 1:&quot;);</span>
+<span class="fc" id="L30">            player1 = scanner.nextLine().trim();</span>
+
+<span class="fc bfc" id="L32" title="All 2 branches covered.">            if (player1.isBlank()) {</span>
+<span class="fc" id="L33">                this.printMessage(&quot;Name cannot be empty. Please try again.\n&quot;);</span>
             }
         }
+<span class="fc" id="L36">        return player1;</span>
+    }
 
-<span class="fc" id="L30">        this.printMessage(&quot;Enter name for Player 2 (leave empty to play against the computer):&quot;);</span>
-<span class="fc" id="L31">        String player2 = scanner.nextLine();</span>
+    private String promptForPlayer2() {
+<span class="fc" id="L40">        this.printMessage(&quot;Enter name for Player 2 (leave empty to play against the computer):&quot;);</span>
+<span class="fc" id="L41">        String player2 = scanner.nextLine();</span>
 
-<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (player2.isEmpty()) {</span>
-<span class="fc" id="L34">            player2 = &quot;Bot&quot;;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (player2.isEmpty()) {</span>
+<span class="fc" id="L44">            player2 = &quot;Bot&quot;;</span>
         }
-<span class="fc" id="L36">        return new String[] { player1, player2 };</span>
+<span class="fc" id="L46">        return player2;</span>
     }
 
     public boolean promptForGameStart() {
-<span class="fc" id="L40">        this.printMessage(&quot;\nPress ENTER to start playing.&quot;);</span>
-<span class="fc" id="L41">        String line = scanner.nextLine();</span>
-<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (line.length() == 0) {</span>
-<span class="fc" id="L43">            return true;</span>
+<span class="fc" id="L50">        this.printMessage(&quot;\nPress ENTER to start playing.&quot;);</span>
+<span class="fc" id="L51">        String line = scanner.nextLine();</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if (line.length() == 0) {</span>
+<span class="fc" id="L53">            return true;</span>
         } else {
-<span class="fc" id="L45">            return false;</span>
+<span class="fc" id="L55">            return false;</span>
         }
     }
-    
+
     public void waitForNextRound() {
-<span class="fc" id="L50">        this.printMessage(&quot;Press ENTER for next round...&quot;);</span>
-<span class="fc" id="L51">        scanner.nextLine();</span>
-<span class="fc" id="L52">}</span>
+<span class="fc" id="L60">        this.printMessage(&quot;Press ENTER for next round...&quot;);</span>
+<span class="fc" id="L61">        scanner.nextLine();</span>
+<span class="fc" id="L62">}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>
