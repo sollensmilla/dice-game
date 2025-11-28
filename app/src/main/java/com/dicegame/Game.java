@@ -34,7 +34,7 @@ public class Game {
         }
     }
 
-    public RoundResult playRound() {
+    private RoundResult playRound() {
         Player player1 = players.get(0);
         Player player2 = players.get(1);
         Round round = new Round(player1, player2, diceCup);
