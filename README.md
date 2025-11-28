@@ -8,6 +8,6 @@ A dice game for 1 to 2 users.
 
 ## Test reports
 
-[Link to the test report](/app/build/reports/tests/test/index.html)
+[Link to the test report](https://sollensmilla.github.io/dice-game/app/build/reports/tests/test/)
 
 [Link to the code coverage report](/app/build/reports/jacoco/test/html/index.html)
