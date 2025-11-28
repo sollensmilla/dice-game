@@ -35,7 +35,7 @@ public class Controller {
 <span class="fc" id="L35">    console.printMessage(message);</span>
 <span class="fc" id="L36">  }</span>
 
-    public void startGame() {
+  public void startGame() {
 <span class="fc bfc" id="L39" title="All 2 branches covered.">    if (console.promptForGameStart()) {</span>
 <span class="fc" id="L40">      Player winner = game.play(this);</span>
 <span class="fc" id="L41">      displayWinner(winner.getName());</span>
@@ -50,30 +50,42 @@ public class Controller {
 <span class="fc" id="L50">  }</span>
 
   public void displayRoundResult(RoundResult roundResult) {
-<span class="fc" id="L53">    String player1Sum = this.message.getRollAndSumMessage(</span>
-<span class="fc" id="L54">        roundResult.getPlayer1().getName(), roundResult.getSum1());</span>
-<span class="fc" id="L55">    String player2Sum = this.message.getRollAndSumMessage(</span>
-<span class="fc" id="L56">        roundResult.getPlayer2().getName(), roundResult.getSum2());</span>
+<span class="fc" id="L53">    printRollAndSumMessage(</span>
+<span class="fc" id="L54">        roundResult.getPlayer1().getName(),</span>
+<span class="fc" id="L55">        roundResult.getSum1());</span>
 
-<span class="fc" id="L58">    Player roundWinner = roundResult.getWinner();</span>
+<span class="fc" id="L57">    printRollAndSumMessage(</span>
+<span class="fc" id="L58">        roundResult.getPlayer2().getName(),</span>
+<span class="fc" id="L59">        roundResult.getSum2());</span>
+
+<span class="fc" id="L61">    printRoundWinnerMessage(roundResult);</span>
+
+<span class="fc" id="L63">    printScoreMessage(</span>
+<span class="fc" id="L64">        roundResult.getPlayer1(),</span>
+<span class="fc" id="L65">        roundResult.getPlayer2());</span>
+
+<span class="fc" id="L67">    console.waitForNextRound();</span>
+<span class="fc" id="L68">  }</span>
+
+  private void printRollAndSumMessage(String playerName, int sum) {
+<span class="fc" id="L71">    String message = this.message.getRollAndSumMessage(playerName, sum);</span>
+<span class="fc" id="L72">    console.printMessage(message + &quot;\n&quot;);</span>
+<span class="fc" id="L73">  }</span>
+
+  private void printRoundWinnerMessage(RoundResult roundResult) {
+<span class="fc" id="L76">    Player roundWinner = roundResult.getWinner();</span>
     String roundWinnerMessage;
-<span class="fc bfc" id="L60" title="All 2 branches covered.">    if (roundWinner == null) {</span>
-<span class="fc" id="L61">      roundWinnerMessage = &quot;It's a tie.&quot;;</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">    if (roundWinner == null) {</span>
+<span class="fc" id="L79">      roundWinnerMessage = &quot;It's a tie.&quot;;</span>
     } else {
-<span class="fc" id="L63">      roundWinnerMessage = this.message.getRoundWinnerMessage(roundWinner.getName());</span>
+<span class="fc" id="L81">      roundWinnerMessage = this.message.getRoundWinnerMessage(roundWinner.getName());</span>
     }
+<span class="fc" id="L83">    console.printMessage(roundWinnerMessage + &quot;\n\n&quot;);</span>
+<span class="fc" id="L84">  }</span>
 
-<span class="fc" id="L66">    String scoreMessage = this.message.getScoreMessage(</span>
-<span class="fc" id="L67">        roundResult.getPlayer1(), roundResult.getPlayer2());</span>
-
-<span class="fc" id="L69">    console.printMessage(</span>
-        player1Sum + &quot;\n&quot; +
-            player2Sum + &quot;\n&quot; +
-            roundWinnerMessage + &quot;\n\n&quot; +
-            scoreMessage);
-
-<span class="fc" id="L75">    console.waitForNextRound();</span>
-<span class="fc" id="L76">  }</span>
-
+  private void printScoreMessage(Player player1, Player player2) {
+<span class="fc" id="L87">    String scoreMessage = this.message.getScoreMessage(player1, player2);</span>
+<span class="fc" id="L88">    console.printMessage(scoreMessage);</span>
+<span class="fc" id="L89">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

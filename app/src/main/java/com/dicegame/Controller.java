@@ -35,7 +35,7 @@ public class Controller {
     console.printMessage(message);
   }
 
-    public void startGame() {
+  public void startGame() {
     if (console.promptForGameStart()) {
       Player winner = game.play(this);
       displayWinner(winner.getName());
@@ -50,11 +50,29 @@ public class Controller {
   }
 
   public void displayRoundResult(RoundResult roundResult) {
-    String player1Sum = this.message.getRollAndSumMessage(
-        roundResult.getPlayer1().getName(), roundResult.getSum1());
-    String player2Sum = this.message.getRollAndSumMessage(
-        roundResult.getPlayer2().getName(), roundResult.getSum2());
+    printRollAndSumMessage(
+        roundResult.getPlayer1().getName(),
+        roundResult.getSum1());
 
+    printRollAndSumMessage(
+        roundResult.getPlayer2().getName(),
+        roundResult.getSum2());
+
+    printRoundWinnerMessage(roundResult);
+
+    printScoreMessage(
+        roundResult.getPlayer1(),
+        roundResult.getPlayer2());
+
+    console.waitForNextRound();
+  }
+
+  private void printRollAndSumMessage(String playerName, int sum) {
+    String message = this.message.getRollAndSumMessage(playerName, sum);
+    console.printMessage(message + "\n");
+  }
+
+  private void printRoundWinnerMessage(RoundResult roundResult) {
     Player roundWinner = roundResult.getWinner();
     String roundWinnerMessage;
     if (roundWinner == null) {
@@ -62,17 +80,11 @@ public class Controller {
     } else {
       roundWinnerMessage = this.message.getRoundWinnerMessage(roundWinner.getName());
     }
-
-    String scoreMessage = this.message.getScoreMessage(
-        roundResult.getPlayer1(), roundResult.getPlayer2());
-
-    console.printMessage(
-        player1Sum + "\n" +
-            player2Sum + "\n" +
-            roundWinnerMessage + "\n\n" +
-            scoreMessage);
-
-    console.waitForNextRound();
+    console.printMessage(roundWinnerMessage + "\n\n");
   }
 
+  private void printScoreMessage(Player player1, Player player2) {
+    String scoreMessage = this.message.getScoreMessage(player1, player2);
+    console.printMessage(scoreMessage);
+  }
 }

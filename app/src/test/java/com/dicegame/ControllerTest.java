@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
 import org.mockito.Mockito;
 
 public class ControllerTest {
@@ -27,7 +28,7 @@ public class ControllerTest {
   public void setUpGameShouldDisplayNamesForGivenInput() {
     Mockito.when(consoleMock.promptForPlayerNames())
         .thenReturn(new String[] { "Alice", "Eva" });
-        
+
     Mockito.when(gameMock.getPlayers())
         .thenReturn(
             List.of(new Player("Alice"), new Player("Eva")));
@@ -112,8 +113,8 @@ public class ControllerTest {
         .printMessage("Alice wins the game!");
   }
 
-  @Test
-  public void displayRoundResultShouldDisplayResultForRound() {
+@Test
+public void displayRoundResultShouldDisplayResultForRound() {
     Player player1 = Mockito.mock(Player.class);
     Player player2 = Mockito.mock(Player.class);
 
@@ -129,17 +130,23 @@ public class ControllerTest {
     Mockito.when(roundResult.getSum2()).thenReturn(5);
     Mockito.when(roundResult.getWinner()).thenReturn(player1);
 
-    String expected = "Alice rolled a sum of 7.\n" +
-        "Eva rolled a sum of 5.\n" +
-        "Alice wins this round.\n\n" +
-        "Points after round:\n" +
-        "Alice: 1\n" +
-        "Eva: 0";
-
     controller.displayRoundResult(roundResult);
 
-    Mockito.verify(consoleMock).printMessage(expected);
-  }
+    InOrder inOrder = Mockito.inOrder(consoleMock);
+
+    inOrder.verify(consoleMock).printMessage("Alice rolled a sum of 7.\n");
+    inOrder.verify(consoleMock).printMessage("Eva rolled a sum of 5.\n");
+    inOrder.verify(consoleMock).printMessage("Alice wins this round.\n\n");
+    inOrder.verify(consoleMock).printMessage(
+        "Points after round:\n" +
+        "Alice: 1\n" +
+        "Eva: 0"
+    );
+
+    inOrder.verify(consoleMock).waitForNextRound();
+}
+
+
 
   @Test
   public void displayRoundResultShouldDisplayResultForPlayerTie() {
@@ -158,15 +165,19 @@ public class ControllerTest {
     Mockito.when(roundResult.getSum2()).thenReturn(5);
     Mockito.when(roundResult.getWinner()).thenReturn(null);
 
-    String expected = "Alice rolled a sum of 5.\n" +
-        "Eva rolled a sum of 5.\n" +
-        "It's a tie.\n\n" +
+   controller.displayRoundResult(roundResult);
+
+    InOrder inOrder = Mockito.inOrder(consoleMock);
+
+    inOrder.verify(consoleMock).printMessage("Alice rolled a sum of 5.\n");
+    inOrder.verify(consoleMock).printMessage("Eva rolled a sum of 5.\n");
+    inOrder.verify(consoleMock).printMessage("It's a tie.\n\n");
+    inOrder.verify(consoleMock).printMessage(
         "Points after round:\n" +
         "Alice: 0\n" +
-        "Eva: 0";
+        "Eva: 0"
+    );
 
-    controller.displayRoundResult(roundResult);
-
-    Mockito.verify(consoleMock).printMessage(expected);
+    inOrder.verify(consoleMock).waitForNextRound();
   }
 }
