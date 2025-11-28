@@ -22,7 +22,10 @@ public class Controller {
 
     List<Player> players = game.getPlayers();
 
-    console.displayWelcomeScreen(players.get(0).getName(), players.get(1).getName());
+    String message = this.message.getWelcomeMessage(
+        players.get(0).getName(), players.get(1).getName());
+
+    console.printMessage(message);
   }
 
   public void startGame() {
@@ -60,8 +63,7 @@ public class Controller {
         player1Sum + "\n" +
             player2Sum + "\n" +
             roundWinnerMessage + "\n\n" +
-            scoreMessage
-    );
+            scoreMessage);
 
     console.waitForNextRound();
   }

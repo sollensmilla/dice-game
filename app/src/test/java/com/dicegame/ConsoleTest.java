@@ -88,27 +88,6 @@ public class ConsoleTest {
     }
 
     @Test
-    public void displayWelcomeScreenShouldDisplayNamesForGivenInput() {
-        String input = "Alice\nEva\n";
-        Scanner scanner = new Scanner(input);
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(output);
-
-        Console console = new Console(scanner, printStream);
-
-        console.promptForPlayerNames();
-        output.reset();
-
-        console.displayWelcomeScreen("Alice", "Eva");
-
-        String expected = "Welcome to the dice game, Alice and Eva!";
-        String actual = output.toString().trim();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
     public void promptForGameStartShouldDisplayPromptForUserAction() {
         String input = "\n";
         Scanner scanner = new Scanner(input);

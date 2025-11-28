@@ -2,6 +2,10 @@ package com.dicegame;
 
 public class Message {
 
+  public String getWelcomeMessage(String player1, String player2) {
+    return "Welcome to the dice game, " + player1 + " and " + player2 + "!";
+  }
+
   public String getRoundWinnerMessage(String playerName) {
     return playerName + " wins this round.";
   }

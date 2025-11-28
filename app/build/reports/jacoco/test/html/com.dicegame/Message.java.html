@@ -2,22 +2,26 @@
 
 <span class="fc" id="L3">public class Message {</span>
 
+  public String getWelcomeMessage(String player1, String player2) {
+<span class="fc" id="L6">    return &quot;Welcome to the dice game, &quot; + player1 + &quot; and &quot; + player2 + &quot;!&quot;;</span>
+  }
+
   public String getRoundWinnerMessage(String playerName) {
-<span class="fc" id="L6">    return playerName + &quot; wins this round.&quot;;</span>
+<span class="fc" id="L10">    return playerName + &quot; wins this round.&quot;;</span>
   }
 
   public String getRollAndSumMessage(String playerName, int sum) {
-<span class="fc" id="L10">    return playerName + &quot; rolled a sum of &quot; + sum + &quot;.&quot;;</span>
+<span class="fc" id="L14">    return playerName + &quot; rolled a sum of &quot; + sum + &quot;.&quot;;</span>
   }
 
   public String getScoreMessage(Player player1, Player player2) {
-<span class="fc" id="L14">    return &quot;Points after round:\n&quot; +</span>
-<span class="fc" id="L15">        player1.getName() + &quot;: &quot; + player1.getScore() + &quot;\n&quot; +</span>
-<span class="fc" id="L16">        player2.getName() + &quot;: &quot; + player2.getScore();</span>
+<span class="fc" id="L18">    return &quot;Points after round:\n&quot; +</span>
+<span class="fc" id="L19">        player1.getName() + &quot;: &quot; + player1.getScore() + &quot;\n&quot; +</span>
+<span class="fc" id="L20">        player2.getName() + &quot;: &quot; + player2.getScore();</span>
   }
 
   public String getFinalWinnerMessage(String playerName) {
-<span class="fc" id="L20">    return playerName + &quot; wins the game!&quot;;</span>
+<span class="fc" id="L24">    return playerName + &quot; wins the game!&quot;;</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

@@ -25,6 +25,20 @@ public class ControllerTest {
   }
 
   @Test
+  public void setUpGameShouldDisplayNamesForGivenInput() {
+    Mockito.when(consoleMock.promptForPlayerNames())
+        .thenReturn(new String[] { "Alice", "Eva" });
+        
+    Mockito.when(gameMock.getPlayers())
+        .thenReturn(
+            List.of(new Player("Alice"), new Player("Eva")));
+
+    controller.setUpGame();
+
+    Mockito.verify(consoleMock).printMessage("Welcome to the dice game, Alice and Eva!");
+  }
+
+  @Test
   public void setUpGameShouldAddPlayersToGameForGivenPlayers() {
     Mockito.when(consoleMock.promptForPlayerNames())
         .thenReturn(new String[] { "Alice", "Eva" });
