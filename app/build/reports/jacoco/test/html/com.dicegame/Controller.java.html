@@ -14,59 +14,66 @@ public class Controller {
 <span class="fc" id="L14">  }</span>
 
   public void setUpGame() {
-<span class="fc" id="L17">    String[] playerNames = console.promptForPlayerNames();</span>
-<span class="fc bfc" id="L18" title="All 2 branches covered.">    for (String name : playerNames) {</span>
-<span class="fc" id="L19">      Player player = new Player(name);</span>
-<span class="fc" id="L20">      game.addPlayer(player);</span>
+<span class="fc" id="L17">    addPlayersToGame();</span>
+<span class="fc" id="L18">    displayWelcomeMessage();</span>
+<span class="fc" id="L19">  }</span>
+
+  private void addPlayersToGame() {
+<span class="fc" id="L22">    String[] playerNames = console.promptForPlayerNames();</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">    for (String name : playerNames) {</span>
+<span class="fc" id="L24">      Player player = new Player(name);</span>
+<span class="fc" id="L25">      game.addPlayer(player);</span>
     }
+<span class="fc" id="L27">  }</span>
 
-<span class="fc" id="L23">    List&lt;Player&gt; players = game.getPlayers();</span>
+  private void displayWelcomeMessage() {
+<span class="fc" id="L30">    List&lt;Player&gt; players = game.getPlayers();</span>
 
-<span class="fc" id="L25">    String message = this.message.getWelcomeMessage(</span>
-<span class="fc" id="L26">        players.get(0).getName(), players.get(1).getName());</span>
+<span class="fc" id="L32">    String message = this.message.getWelcomeMessage(</span>
+<span class="fc" id="L33">        players.get(0).getName(), players.get(1).getName());</span>
 
-<span class="fc" id="L28">    console.printMessage(message);</span>
-<span class="fc" id="L29">  }</span>
+<span class="fc" id="L35">    console.printMessage(message);</span>
+<span class="fc" id="L36">  }</span>
 
-  public void startGame() {
-<span class="fc bfc" id="L32" title="All 2 branches covered.">    if (console.promptForGameStart()) {</span>
-<span class="fc" id="L33">      Player winner = game.play(this);</span>
-<span class="fc" id="L34">      displayWinner(winner.getName());</span>
-<span class="fc" id="L35">    } else {</span>
-<span class="fc" id="L36">      console.printMessage(&quot;Good bye!&quot;);</span>
+    public void startGame() {
+<span class="fc bfc" id="L39" title="All 2 branches covered.">    if (console.promptForGameStart()) {</span>
+<span class="fc" id="L40">      Player winner = game.play(this);</span>
+<span class="fc" id="L41">      displayWinner(winner.getName());</span>
+<span class="fc" id="L42">    } else {</span>
+<span class="fc" id="L43">      console.printMessage(&quot;Good bye!&quot;);</span>
     }
-<span class="fc" id="L38">  }</span>
+<span class="fc" id="L45">  }</span>
 
-  public void displayWinner(String name) {
-<span class="fc" id="L41">    String message = this.message.getFinalWinnerMessage(name);</span>
-<span class="fc" id="L42">    console.printMessage(message);</span>
-<span class="fc" id="L43">  }</span>
+  private void displayWinner(String name) {
+<span class="fc" id="L48">    String message = this.message.getFinalWinnerMessage(name);</span>
+<span class="fc" id="L49">    console.printMessage(message);</span>
+<span class="fc" id="L50">  }</span>
 
   public void displayRoundResult(RoundResult roundResult) {
-<span class="fc" id="L46">    String player1Sum = this.message.getRollAndSumMessage(</span>
-<span class="fc" id="L47">        roundResult.getPlayer1().getName(), roundResult.getSum1());</span>
-<span class="fc" id="L48">    String player2Sum = this.message.getRollAndSumMessage(</span>
-<span class="fc" id="L49">        roundResult.getPlayer2().getName(), roundResult.getSum2());</span>
+<span class="fc" id="L53">    String player1Sum = this.message.getRollAndSumMessage(</span>
+<span class="fc" id="L54">        roundResult.getPlayer1().getName(), roundResult.getSum1());</span>
+<span class="fc" id="L55">    String player2Sum = this.message.getRollAndSumMessage(</span>
+<span class="fc" id="L56">        roundResult.getPlayer2().getName(), roundResult.getSum2());</span>
 
-<span class="fc" id="L51">    Player roundWinner = roundResult.getWinner();</span>
+<span class="fc" id="L58">    Player roundWinner = roundResult.getWinner();</span>
     String roundWinnerMessage;
-<span class="fc bfc" id="L53" title="All 2 branches covered.">    if (roundWinner == null) {</span>
-<span class="fc" id="L54">      roundWinnerMessage = &quot;It's a tie.&quot;;</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">    if (roundWinner == null) {</span>
+<span class="fc" id="L61">      roundWinnerMessage = &quot;It's a tie.&quot;;</span>
     } else {
-<span class="fc" id="L56">      roundWinnerMessage = this.message.getRoundWinnerMessage(roundWinner.getName());</span>
+<span class="fc" id="L63">      roundWinnerMessage = this.message.getRoundWinnerMessage(roundWinner.getName());</span>
     }
 
-<span class="fc" id="L59">    String scoreMessage = this.message.getScoreMessage(</span>
-<span class="fc" id="L60">        roundResult.getPlayer1(), roundResult.getPlayer2());</span>
+<span class="fc" id="L66">    String scoreMessage = this.message.getScoreMessage(</span>
+<span class="fc" id="L67">        roundResult.getPlayer1(), roundResult.getPlayer2());</span>
 
-<span class="fc" id="L62">    console.printMessage(</span>
+<span class="fc" id="L69">    console.printMessage(</span>
         player1Sum + &quot;\n&quot; +
             player2Sum + &quot;\n&quot; +
             roundWinnerMessage + &quot;\n\n&quot; +
             scoreMessage);
 
-<span class="fc" id="L68">    console.waitForNextRound();</span>
-<span class="fc" id="L69">  }</span>
+<span class="fc" id="L75">    console.waitForNextRound();</span>
+<span class="fc" id="L76">  }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

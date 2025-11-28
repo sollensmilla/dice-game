@@ -91,10 +91,12 @@ public class ControllerTest {
 
   @Test
   public void displayWinnerShouldPrintNameForFinalWinner() {
-    Player winner = new Player("Alice");
+    Mockito.when(gameMock.play(controller)).thenReturn(new Player("Alice"));
     String expected = "Alice wins the game!";
 
-    controller.displayWinner(winner.getName());
+    Mockito.when(consoleMock.promptForGameStart()).thenReturn(true);
+
+    controller.startGame();
 
     Mockito.verify(consoleMock).printMessage(expected);
   }

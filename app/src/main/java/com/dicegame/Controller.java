@@ -14,12 +14,19 @@ public class Controller {
   }
 
   public void setUpGame() {
+    addPlayersToGame();
+    displayWelcomeMessage();
+  }
+
+  private void addPlayersToGame() {
     String[] playerNames = console.promptForPlayerNames();
     for (String name : playerNames) {
       Player player = new Player(name);
       game.addPlayer(player);
     }
+  }
 
+  private void displayWelcomeMessage() {
     List<Player> players = game.getPlayers();
 
     String message = this.message.getWelcomeMessage(
@@ -28,7 +35,7 @@ public class Controller {
     console.printMessage(message);
   }
 
-  public void startGame() {
+    public void startGame() {
     if (console.promptForGameStart()) {
       Player winner = game.play(this);
       displayWinner(winner.getName());
@@ -37,7 +44,7 @@ public class Controller {
     }
   }
 
-  public void displayWinner(String name) {
+  private void displayWinner(String name) {
     String message = this.message.getFinalWinnerMessage(name);
     console.printMessage(message);
   }
