@@ -19,15 +19,15 @@ public class Console {
     public String[] promptForPlayerNames() {
 <span class="fc" id="L20">        String player1 = &quot;&quot;;</span>
 <span class="fc bfc" id="L21" title="All 2 branches covered.">        while (player1.isBlank()) {</span>
-<span class="fc" id="L22">            out.println(&quot;Enter name for Player 1:&quot;);</span>
+<span class="fc" id="L22">            this.printMessage(&quot;Enter name for Player 1:&quot;);</span>
 <span class="fc" id="L23">            player1 = scanner.nextLine().trim();</span>
 
 <span class="fc bfc" id="L25" title="All 2 branches covered.">            if (player1.isBlank()) {</span>
-<span class="fc" id="L26">                out.println(&quot;Name cannot be empty. Please try again.\n&quot;);</span>
+<span class="fc" id="L26">                this.printMessage(&quot;Name cannot be empty. Please try again.\n&quot;);</span>
             }
         }
 
-<span class="fc" id="L30">        out.println(&quot;Enter name for Player 2 (leave empty to play against the computer):&quot;);</span>
+<span class="fc" id="L30">        this.printMessage(&quot;Enter name for Player 2 (leave empty to play against the computer):&quot;);</span>
 <span class="fc" id="L31">        String player2 = scanner.nextLine();</span>
 
 <span class="fc bfc" id="L33" title="All 2 branches covered.">        if (player2.isEmpty()) {</span>
@@ -35,9 +35,9 @@ public class Console {
         }
 <span class="fc" id="L36">        return new String[] { player1, player2 };</span>
     }
-    
+
     public boolean promptForGameStart() {
-<span class="fc" id="L40">        out.println(&quot;\nPress ENTER to start playing.&quot;);</span>
+<span class="fc" id="L40">        this.printMessage(&quot;\nPress ENTER to start playing.&quot;);</span>
 <span class="fc" id="L41">        String line = scanner.nextLine();</span>
 <span class="fc bfc" id="L42" title="All 2 branches covered.">        if (line.length() == 0) {</span>
 <span class="fc" id="L43">            return true;</span>
@@ -47,13 +47,13 @@ public class Console {
     }
 
     public void displayRoundResult(String string1, String string2, String string3) {
-<span class="fc" id="L50">        out.print(string1 + &quot;\n&quot; +</span>
+<span class="fc" id="L50">        this.printMessage(string1 + &quot;\n&quot; +</span>
                 string2 + &quot;\n&quot; +
                 string3);
 <span class="fc" id="L53">    }</span>
 
     public void waitForNextRound() {
-<span class="fc" id="L56">        out.println(&quot;Press ENTER for next round...&quot;);</span>
+<span class="fc" id="L56">        this.printMessage(&quot;Press ENTER for next round...&quot;);</span>
 <span class="fc" id="L57">        scanner.nextLine();</span>
 <span class="fc" id="L58">}</span>
 

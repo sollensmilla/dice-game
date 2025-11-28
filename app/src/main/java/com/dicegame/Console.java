@@ -19,15 +19,15 @@ public class Console {
     public String[] promptForPlayerNames() {
         String player1 = "";
         while (player1.isBlank()) {
-            out.println("Enter name for Player 1:");
+            this.printMessage("Enter name for Player 1:");
             player1 = scanner.nextLine().trim();
 
             if (player1.isBlank()) {
-                out.println("Name cannot be empty. Please try again.\n");
+                this.printMessage("Name cannot be empty. Please try again.\n");
             }
         }
 
-        out.println("Enter name for Player 2 (leave empty to play against the computer):");
+        this.printMessage("Enter name for Player 2 (leave empty to play against the computer):");
         String player2 = scanner.nextLine();
 
         if (player2.isEmpty()) {
@@ -35,9 +35,9 @@ public class Console {
         }
         return new String[] { player1, player2 };
     }
-    
+
     public boolean promptForGameStart() {
-        out.println("\nPress ENTER to start playing.");
+        this.printMessage("\nPress ENTER to start playing.");
         String line = scanner.nextLine();
         if (line.length() == 0) {
             return true;
@@ -47,13 +47,13 @@ public class Console {
     }
 
     public void displayRoundResult(String string1, String string2, String string3) {
-        out.print(string1 + "\n" +
+        this.printMessage(string1 + "\n" +
                 string2 + "\n" +
                 string3);
     }
 
     public void waitForNextRound() {
-        out.println("Press ENTER for next round...");
+        this.printMessage("Press ENTER for next round...");
         scanner.nextLine();
 }
 
