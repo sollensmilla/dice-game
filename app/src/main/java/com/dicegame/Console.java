@@ -45,13 +45,7 @@ public class Console {
             return false;
         }
     }
-
-    public void displayRoundResult(String string1, String string2, String string3) {
-        this.printMessage(string1 + "\n" +
-                string2 + "\n" +
-                string3);
-    }
-
+    
     public void waitForNextRound() {
         this.printMessage("Press ENTER for next round...");
         scanner.nextLine();

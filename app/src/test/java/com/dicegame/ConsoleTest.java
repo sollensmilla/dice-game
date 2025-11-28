@@ -133,24 +133,6 @@ public class ConsoleTest {
     }
 
     @Test
-    public void displayRoundResultShouldDisplaySumsAndWinnerForEachRound() {
-        String input = "Alice\nEva\n";
-        Scanner scanner = new Scanner(input);
-
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(output);
-
-        Console console = new Console(scanner, printStream);
-        console.displayRoundResult("Alice rolled a sum of 7.", "Eva rolled a sum of 5.", "Alice wins this round.");
-
-        String expected = "Alice rolled a sum of 7.\nEva rolled a sum of 5.\nAlice wins this round.";
-
-        String actual = output.toString().trim();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
     public void waitForNextRoundShouldDisplayPromptForUserAndWaitForEnter() {
         Scanner scanner = new Scanner("\n");
 
