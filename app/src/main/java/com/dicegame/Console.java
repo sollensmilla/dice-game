@@ -24,7 +24,7 @@ public class Console {
     }
 
     private String promptForPlayer1() {
-                String player1 = "";
+        String player1 = "";
         while (player1.isBlank()) {
             this.printMessage("Enter name for Player 1:");
             player1 = scanner.nextLine().trim();
@@ -59,6 +59,6 @@ public class Console {
     public void waitForNextRound() {
         this.printMessage("Press ENTER for next round...");
         scanner.nextLine();
-}
+    }
 
 }

@@ -113,8 +113,8 @@ public class ControllerTest {
         .printMessage("Alice wins the game!");
   }
 
-@Test
-public void displayRoundResultShouldDisplayResultForRound() {
+  @Test
+  public void displayRoundResultShouldDisplayResultForRound() {
     Player player1 = Mockito.mock(Player.class);
     Player player2 = Mockito.mock(Player.class);
 
@@ -139,14 +139,11 @@ public void displayRoundResultShouldDisplayResultForRound() {
     inOrder.verify(consoleMock).printMessage("Alice wins this round.\n\n");
     inOrder.verify(consoleMock).printMessage(
         "Points after round:\n" +
-        "Alice: 1\n" +
-        "Eva: 0"
-    );
+            "Alice: 1\n" +
+            "Eva: 0");
 
     inOrder.verify(consoleMock).waitForNextRound();
-}
-
-
+  }
 
   @Test
   public void displayRoundResultShouldDisplayResultForPlayerTie() {
@@ -165,7 +162,7 @@ public void displayRoundResultShouldDisplayResultForRound() {
     Mockito.when(roundResult.getSum2()).thenReturn(5);
     Mockito.when(roundResult.getWinner()).thenReturn(null);
 
-   controller.displayRoundResult(roundResult);
+    controller.displayRoundResult(roundResult);
 
     InOrder inOrder = Mockito.inOrder(consoleMock);
 
@@ -174,9 +171,8 @@ public void displayRoundResultShouldDisplayResultForRound() {
     inOrder.verify(consoleMock).printMessage("It's a tie.\n\n");
     inOrder.verify(consoleMock).printMessage(
         "Points after round:\n" +
-        "Alice: 0\n" +
-        "Eva: 0"
-    );
+            "Alice: 0\n" +
+            "Eva: 0");
 
     inOrder.verify(consoleMock).waitForNextRound();
   }

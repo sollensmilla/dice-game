@@ -12,5 +12,5 @@ public class DiceTest {
     assertTrue(roll >= 1, "Roll should be at least 1");
     assertTrue(roll <= 6, "Roll should be max 6");
   }
-  
+
 }

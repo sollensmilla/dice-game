@@ -39,7 +39,7 @@ public class RoundResultTest {
   public void getSum2ShouldReturnSumForPlayer2() {
     assertEquals(10, roundResult.getSum2());
   }
-  
+
   @Test
   public void getWinnerShouldReturnPlayerObjectForWinner() {
     assertEquals(player2, roundResult.getWinner());

@@ -9,7 +9,7 @@ public class PlayerTest {
         assert player.getName().equals("Alice") : "Player name should be Alice";
     }
 
-    @Test 
+    @Test
     public void getScoreShouldStartWithZeroScoreForPlayer() {
         Player player = new Player("Eva");
         assert player.getScore() == 0 : "Player score should start at 0";

@@ -11,7 +11,7 @@ public class Round {
         this.diceCup = diceCup;
     }
 
-      public RoundResult playRound() {
+    public RoundResult playRound() {
         int player1Roll = diceCup.rollAndSum();
         int player2Roll = diceCup.rollAndSum();
 

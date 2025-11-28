@@ -8,6 +8,6 @@ public class Dice {
 
   public int roll() {
     this.faceValue = random.nextInt(6) + 1;
-      return this.faceValue;
+    return this.faceValue;
   }
 }
