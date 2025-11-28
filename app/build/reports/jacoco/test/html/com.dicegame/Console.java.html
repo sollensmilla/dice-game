@@ -24,7 +24,7 @@ public class Console {
     }
 
     private String promptForPlayer1() {
-<span class="fc" id="L27">                String player1 = &quot;&quot;;</span>
+<span class="fc" id="L27">        String player1 = &quot;&quot;;</span>
 <span class="fc bfc" id="L28" title="All 2 branches covered.">        while (player1.isBlank()) {</span>
 <span class="fc" id="L29">            this.printMessage(&quot;Enter name for Player 1:&quot;);</span>
 <span class="fc" id="L30">            player1 = scanner.nextLine().trim();</span>
@@ -59,7 +59,7 @@ public class Console {
     public void waitForNextRound() {
 <span class="fc" id="L60">        this.printMessage(&quot;Press ENTER for next round...&quot;);</span>
 <span class="fc" id="L61">        scanner.nextLine();</span>
-<span class="fc" id="L62">}</span>
+<span class="fc" id="L62">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

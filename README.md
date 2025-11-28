@@ -1,6 +1,8 @@
 # dice-game
 A dice game for 1 to 2 users.
 
+Made in collaboration by Smilla Sollén and Maria Mair for course 1DV609 assignment 1 part 2 at Linnéaus University.
+
 ## Running the application
 1. Fork and clone the application.
 2. Open a terminal in the folder where you saved the cloned application.
