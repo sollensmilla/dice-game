@@ -4,7 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.List;
+import java.util.Scanner;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
@@ -175,5 +179,24 @@ public class ControllerTest {
             "Eva: 0");
 
     inOrder.verify(consoleMock).waitForNextRound();
+  }
+
+  @Test
+  public void displayRoundResultShouldCallForMessageMethods() {
+    Message messageSpy = Mockito.spy(new Message());
+    Console consoleSpy = Mockito.spy(new Console(new Scanner("\n"), new PrintStream(new ByteArrayOutputStream())));
+
+    Controller localController = new Controller(gameMock, consoleSpy, messageSpy);
+
+    Player p1 = new Player("Alice");
+    Player p2 = new Player("Eva");
+
+    RoundResult result = new RoundResult(p1, 7, p2, 5, p1);
+
+    localController.displayRoundResult(result);
+
+    Mockito.verify(messageSpy).getRollAndSumMessage("Alice", 7);
+    Mockito.verify(messageSpy).getRollAndSumMessage("Eva", 5);
+    Mockito.verify(messageSpy).getRoundWinnerMessage("Alice");
   }
 }
